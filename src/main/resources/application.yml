@@ -1,0 +1,8 @@
+
+spring:
+  application:
+    name: swaranjali
+
+server:
+  servlet:
+    context-path: /swaranjali
