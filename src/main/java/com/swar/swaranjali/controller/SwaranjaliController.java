@@ -1,8 +1,10 @@
 package com.swar.swaranjali.controller;
 
 import com.swar.swaranjali.constants.Alankars;
+import com.swar.swaranjali.constants.Rhythms;
 import com.swar.swaranjali.service.ScaleService;
 import jm.constants.Pitches;
+import jm.constants.ProgramChanges;
 import jm.music.data.Part;
 import jm.music.data.Phrase;
 import jm.music.data.Score;
@@ -21,9 +23,6 @@ import java.util.stream.Collectors;
 
 import static com.swar.swaranjali.constants.Formula.*;
 import static java.util.Collections.reverse;
-import static jm.constants.Durations.C;
-import static jm.constants.Durations.HALF_NOTE;
-import static jm.constants.ProgramChanges.*;
 
 @RestController
 public class SwaranjaliController {
@@ -37,85 +36,206 @@ public class SwaranjaliController {
             @RequestParam String scale,
             @RequestParam int numberOfOctaves,
             @RequestParam int pitch,
+            @RequestParam List<String> alankarNameList,
+            @RequestParam int tempo,
+            @RequestParam String instrument) throws Exception {
+
+        Thread.sleep(1000);
+        for(String alankarName : alankarNameList) {
+            //Retrieve the scale notes for number of Octaves
+            List<Integer> scaleNotes = scaleService.retrieveScaleNotesForNumOfOctaves(key, scale, pitch, numberOfOctaves);
+
+            List<List<String>> arovaAndAvrohaList = Alankars.ALK_SARGAM_COLLECTION.get(alankarName);
+
+            //  List<List<Integer>> upAndDownAlankar = Alankars.ALK_COLLECTION.get(alankarName);
+
+            Field pitchField = Pitches.class.getField(key + pitch);
+            int pitchValue = pitchField.getInt(Pitches.class);
+
+            Map<Integer, List<Double>> octaveRhythm = Rhythms.RHYTHM_COLLECTION.get(alankarName);
+            double[] rhythmArray = octaveRhythm.get(numberOfOctaves).stream().mapToDouble(i->i).toArray();
+
+            List<Integer> alankar1AscDerived = scaleService.deriveScaleNotesForUpAlakar(
+                    arovaAndAvrohaList.get(0), scaleNotes, numberOfOctaves, rhythmArray.length);
+
+            reverse(scaleNotes);
+
+            List<Integer> alankar1DscDerived = scaleService.deriveScaleNotesForDownAlakar(
+                    arovaAndAvrohaList.get(1), scaleNotes, pitchValue, numberOfOctaves, rhythmArray.length);
+
+            printNotes(alankar1AscDerived);
+            printNotes(alankar1DscDerived);
+
+            Field instrumentField = ProgramChanges.class.getField(instrument);
+            int instrumentValue = instrumentField.getInt(ProgramChanges.class);
+            //Ascending
+            Phrase phraseAsc = new Phrase(0.0);
+            int[] aaroh = alankar1AscDerived.stream().mapToInt(i->i).toArray();
+            phraseAsc.addNoteList(aaroh, rhythmArray);
+            //Part ascPart = new Part(phraseAsc);
+            Part ascPart = new Part("phraseAsc", instrumentValue);
+            ascPart.addPhrase(phraseAsc);
+
+            //Descending Phrase
+            Phrase phraseDsc = new Phrase();
+            phraseDsc.setStartTime(phraseAsc.getEndTime());
+            //Collections.reverse(alankar1AscDerived);
+            int[] avroh = alankar1DscDerived.stream().mapToInt(i->i).toArray();
+            phraseDsc.addNoteList(avroh, rhythmArray);
+            //Part dscPart = new Part(phraseDsc);
+            Part dscPart = new Part("phraseDsc", instrumentValue);
+            dscPart.addPhrase(phraseDsc);
+
+            Score score = new Score( key, tempo);
+            score.insertPart(ascPart, 0);
+            score.insertPart(dscPart, 1);
+
+
+            Play.midi(score);
+
+        }
+
+
+        return null;
+    }
+
+    @GetMapping("/identify")
+    public ResponseEntity<List<String>> identify(
+            @RequestParam String key,
+            @RequestParam String scale,
+            @RequestParam int numberOfOctaves,
+            @RequestParam int pitch,
             @RequestParam String alankarName,
-            @RequestParam int tempo) throws Exception {
+            @RequestParam int tempo,
+            @RequestParam String instrument,
+            @RequestParam int numberOfRandomNotes) throws Exception {
 
-        List<Integer> scaleNotes = scaleService.retrieveUpScaleNotesForNumOfOctaves(key, scale, pitch, numberOfOctaves);
+        List<Integer> scaleNotes = scaleService.retrieveScaleNotesForNumOfOctaves(key, scale, pitch, numberOfOctaves);
 
-        List<List<Integer>> upAndDown = Alankars.ALK_COLLECTION.get(alankarName);
+        List<Integer> randomNotesList = getRandomNotesList(scaleNotes, numberOfRandomNotes);
+        printNotes(randomNotesList);
 
+        Map<Integer, List<Double>> octaveRhythm = Rhythms.RHYTHM_COLLECTION.get(alankarName);
+        double[] rhythmArray = octaveRhythm.get(numberOfRandomNotes).stream().mapToDouble(i->i).toArray();
 
-        Field pitchField = Pitches.class.getField(key + pitch);
-        int pitchValue = pitchField.getInt(Pitches.class);
-
-        List<Integer> alankar1AscDerived = scaleService.deriveScaleNotesForUpAlakar(upAndDown.get(0), scaleNotes, numberOfOctaves);
-
-        //int[] alankar1DscDerived1 = upAndDown.get(1).stream().map(i -> (i+pitchValue)).collect(Collectors.toList()).stream().mapToInt(x -> x).toArray();
-        reverse(scaleNotes);
-
-        List<Integer> alankar1DscDerived = scaleService.deriveScaleNotesForDownAlakar(upAndDown.get(1), scaleNotes, pitchValue, numberOfOctaves);
-
-
-        System.out.println(
-                alankar1AscDerived.stream()
-                        .map(note -> ""+note)
-                        .collect(Collectors.joining(", ", "{", "}")));
-
-        System.out.println(
-                alankar1DscDerived.stream()
-                        .map(note -> ""+note)
-                        .collect(Collectors.joining(", ", "{", "}")));
-
-//        System.out.println(
-//                Arrays.stream(alankar1DscDerived)
-//                        .map(i -> (i-60))
-//                        .mapToObj(Integer::toString)
-//                        .collect(Collectors.joining(", ", "{", "}")));
-
-//        double[] rhythmArray = {C,C,C,C,C,C,C,C,C,C,
-//                C,C,C,C,C,C,C,C,C,C,
-//                C,C,C,C,C,C,C,C,C,C,
-//                C,C,C,C,C,C,C,C,HALF_NOTE};
-
-        double[] rhythmArray = {C,C,C,C,
-                C,C,C,C,
-                C,C,C,C,
-                C,C,C,C,
-                C,C,C,C,
-                C,C,C,C,
-                C,C,C,C,
-                C,C,C,C,
-                C,C,C,C,
-                C,C,C,C,
-                C,C,C,C,
-                C,C,C,C,
-                C,C,C,HALF_NOTE};
+        Field instrumentField = ProgramChanges.class.getField(instrument);
+        int instrumentValue = instrumentField.getInt(ProgramChanges.class);
         //Ascending
         Phrase phraseAsc = new Phrase(0.0);
-        int[] aaroh = alankar1AscDerived.stream().mapToInt(i->i).toArray();
-        phraseAsc.addNoteList(aaroh, rhythmArray);
+        int[] randomNotesArray = randomNotesList.stream().mapToInt(i->i).toArray();
+        phraseAsc.addNoteList(randomNotesArray, rhythmArray);
         //Part ascPart = new Part(phraseAsc);
-        Part ascPart = new Part("phraseAsc", ACOUSTIC_GRAND);
+        Part ascPart = new Part("phraseAsc", instrumentValue);
         ascPart.addPhrase(phraseAsc);
 
-        //Descending Phrase
-        Phrase phraseDsc = new Phrase();
-        phraseDsc.setStartTime(phraseAsc.getEndTime());
-        //Collections.reverse(alankar1AscDerived);
-        int[] avroh = alankar1DscDerived.stream().mapToInt(i->i).toArray();
-        phraseDsc.addNoteList(avroh, rhythmArray);
-        //Part dscPart = new Part(phraseDsc);
-        Part dscPart = new Part("phraseDsc", ACOUSTIC_GRAND);
-        dscPart.addPhrase(phraseDsc);
 
         Score score = new Score( key, tempo);
         score.insertPart(ascPart, 0);
-        score.insertPart(dscPart, 1);
+
 
 
         Play.midi(score);
 
+        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Enter to repeat");
+
+        int exit = myObj.nextInt();
+        while(true) {
+            if(exit == 0) {
+                break;
+            }
+            printNotes(randomNotesList);
+            Thread.sleep(1000);
+            Play.midi(score);
+            exit = myObj.nextInt();
+        }
+
         return null;
+    }
+
+    @GetMapping("/choice_identify")
+    public ResponseEntity<List<String>> choice_identify(
+            @RequestParam String key,
+            @RequestParam String scale,
+            @RequestParam int numberOfOctaves,
+            @RequestParam int pitch,
+            @RequestParam String alankarName,
+            @RequestParam int tempo,
+            @RequestParam String instrument,
+            @RequestParam List<String> notesToPlay) throws Exception {
+
+        Field pitchField = Pitches.class.getField(key + pitch);
+        int pitchValue = pitchField.getInt(Pitches.class);
+
+        List<Integer> scaleNotes = scaleService.retrieveScaleNotesForNumOfOctaves(key, scale, pitch, numberOfOctaves);
+        scaleNotes.add(pitchValue + 12 * numberOfOctaves);
+        List<String> scaleNotesByName = scaleNotes.stream().map(note -> getNoteName(note)).collect(Collectors.toList());
+
+        List<Integer> selectedNotesList = getSelectedNotesList(scaleNotesByName, notesToPlay);
+        printNotes(selectedNotesList);
+
+        Map<Integer, List<Double>> octaveRhythm = Rhythms.RHYTHM_COLLECTION.get(alankarName);
+        double[] rhythmArray = octaveRhythm.get(notesToPlay.size()).stream().mapToDouble(i->i).toArray();
+
+        Field instrumentField = ProgramChanges.class.getField(instrument);
+        int instrumentValue = instrumentField.getInt(ProgramChanges.class);
+        //Ascending
+        Phrase phraseAsc = new Phrase(0.0);
+        int[] randomNotesArray = selectedNotesList.stream().mapToInt(i->i).toArray();
+        phraseAsc.addNoteList(randomNotesArray, rhythmArray);
+        //Part ascPart = new Part(phraseAsc);
+        Part ascPart = new Part("phraseAsc", instrumentValue);
+        ascPart.addPhrase(phraseAsc);
+
+
+        Score score = new Score( key, tempo);
+        score.insertPart(ascPart, 0);
+
+
+
+        Play.midi(score);
+
+        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Enter to repeat");
+
+        int exit = myObj.nextInt();
+        while(true) {
+            if(exit == 0) {
+                break;
+            }
+            printNotes(selectedNotesList);
+            Thread.sleep(1000);
+            Play.midi(score);
+            exit = myObj.nextInt();
+        }
+
+        return null;
+    }
+
+    public List<Integer> getSelectedNotesList(List<String> listOfScaleNotes, List<String> listOfSelectedNotes) throws Exception {
+        Collections.shuffle(listOfScaleNotes);
+        Collections.shuffle(listOfSelectedNotes);
+        List<Integer> selectedNotesList = new ArrayList();
+        for(String selectedNoteName : listOfSelectedNotes) {
+            for(String scaleNoteName : listOfScaleNotes) {
+                if(scaleNoteName.startsWith(selectedNoteName)) {
+                    Field pitchField = Pitches.class.getField(scaleNoteName);
+                    int pitchValue = pitchField.getInt(Pitches.class);
+                    selectedNotesList.add(pitchValue);
+                    break;
+                }
+            }
+        }
+        return selectedNotesList;
+    }
+
+    public List<Integer> getRandomNotesList(List<Integer> listOfNotes, int numberOfRandomNotes) {
+        List<Integer> randomNotesList = new ArrayList();
+        for(int i=0; i<numberOfRandomNotes; i++) {
+            int randomNum =  (int) ((Math.random() * ((listOfNotes.size()) - 0)) + 0);
+            randomNotesList.add(listOfNotes.get(randomNum));
+        }
+        return randomNotesList;
     }
 
     public ResponseEntity<List<String>> getScale(String key, String scaleVal) {
@@ -148,5 +268,35 @@ public class SwaranjaliController {
         String note = wholeSteps.get(runningNote[0]);
         result.add(note);
         runningNote[0] = note;
+    }
+
+    private void printNotes(List<Integer> listOfNotes) {
+        System.out.println(
+                listOfNotes.stream()
+                        .map(
+                                note -> getNoteName(note))
+                        .collect(Collectors.joining(", ", "{", "}")));
+    }
+
+    private String getNoteName(int noteValue) {
+        String noteNameToReturn = "NOT_FOUND";
+        try {
+            Field[] pitchFields = Pitches.class.getDeclaredFields();
+            List<String> noteNames = new ArrayList<>();
+            for(Field field : pitchFields) {
+                if(field.getInt(Pitches.class) == noteValue) {
+                    noteNames.add(field.getName());
+                }
+            }
+            for(String noteName : noteNames) {
+                if(noteName.length() == 2) {
+                    noteNameToReturn = noteName;
+                    break;
+                }
+            }
+        } catch (Exception e) {
+
+        }
+        return noteNameToReturn;
     }
 }

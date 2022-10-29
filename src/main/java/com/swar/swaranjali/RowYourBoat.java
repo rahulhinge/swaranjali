@@ -53,8 +53,8 @@ public final class RowYourBoat implements JMC{
         score.addPart(trumpet);
         score.addPart(clarinet);
 
-        Play.midi(score);
+       // Play.midi(score);
         //OK now we do a SMF write
-       // Write.midi(score, "rowboat.mid");
+        Write.midi(score, "rowboat.mid");
     }
 }

@@ -50,7 +50,7 @@ class SwaranjaliControllerTest {
     @Test
     void payANote() throws Exception {
 
-        swaranjaliController.playAlankar("C", "MAJOR_SCALE", 2,3,"ALK_1", 120);
+        swaranjaliController.playAlankar("C", "MAJOR_SCALE", 2,3,List.of("ALK_1"), 120, "ACOUSTIC_GUITAR");
 //        Thread.sleep(2000);
 //        swaranjaliController.playAlankar("D", 3,"ALK_1", 120);
 //        Thread.sleep(2000);
