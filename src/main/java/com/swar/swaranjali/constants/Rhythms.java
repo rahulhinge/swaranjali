@@ -9,6 +9,12 @@ import static jm.constants.Durations.HALF_NOTE;
 public interface Rhythms {
 
     public static final Map<String, Map<Integer, List<Double>>>  RHYTHM_COLLECTION = Map.of(
+            "ALK_0",
+            Map.of( 1, List.of(
+                            C,C,C,C,C,C,C,HALF_NOTE),
+                    2, List.of(
+                            C,C,C,C,C,C,C,C,C,C,C,C,C,C,HALF_NOTE)),
+
             "ALK_1",
             Map.of( 1, List.of(
                             C,C,C,  C,C,C,  C,C,C,  C,C,C,

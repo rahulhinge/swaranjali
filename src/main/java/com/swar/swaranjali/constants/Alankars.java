@@ -36,6 +36,14 @@ public interface Alankars {
 
     public static final Map<String, List<List<String>>> ALK_SARGAM_COLLECTION = Map.ofEntries(
             Map.entry(
+                    "ALK_0",
+                    List.of(
+                            List.of(SA, RE, GA, MA, PA, DHA, NEE, SAh),
+
+                            List.of(SAh, NEE, DHA, PA, MA, GA, RE, SA)
+                    )
+            ),
+            Map.entry(
                 "ALK_1",
                 List.of(
                     List.of(SA, RE, GA,        RE, GA, MA,      GA, MA, PA,      MA, PA, DHA,
