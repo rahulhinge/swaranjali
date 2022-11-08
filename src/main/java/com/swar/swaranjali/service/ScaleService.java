@@ -78,7 +78,10 @@ public class ScaleService {
 //            }
 //        }
 //        aarohList = aarohList.subList(0, cutOfIndex);
-        aaroh = aaroh.subList(0, alankarCutOffForOctave);
+        if(aaroh.size() > alankarCutOffForOctave) {
+            aaroh = aaroh.subList(0, alankarCutOffForOctave);
+        }
+
         return aaroh;
     }
 
@@ -126,7 +129,9 @@ public class ScaleService {
 //            }
 //        }
 //        avrohList = avrohList.subList(0, cutOfIndex);
-        avroh = avroh.subList(0, alankarCutOffForOctave);
+        if(avroh.size() > alankarCutOffForOctave) {
+            avroh = avroh.subList(0, alankarCutOffForOctave);
+        }
         return avroh;
     }
 }

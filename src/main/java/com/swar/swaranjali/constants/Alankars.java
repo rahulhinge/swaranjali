@@ -11,6 +11,13 @@ public interface Alankars {
 
     public static final Map<String, Integer> ALANKAR_KEYS_VAL = Map.ofEntries(
 
+
+            Map.entry(SAl, -12),
+            Map.entry(REl, -10),
+            Map.entry(GAl, -8),
+            Map.entry(MAl, -7),
+
+
             Map.entry(PAl, -5),
             Map.entry(DHAl, -3),
             Map.entry(NEEl, -1),
@@ -26,7 +33,44 @@ public interface Alankars {
 
             Map.entry(REh, 14),
             Map.entry(GAh, 16),
-            Map.entry(MAh, 17)
+            Map.entry(MAh, 17),
+
+            Map.entry(PAh, 19),
+            Map.entry(DHAh, 21),
+            Map.entry(NEEh, 23),
+            Map.entry(SAhh, 24)
+    );
+
+    public static final Map<Integer, String> VAL_TO_SARGAM = Map.ofEntries(
+
+
+            Map.entry(-12, SAl ),
+            Map.entry(-10, REl),
+            Map.entry(-8, GAl),
+            Map.entry(-7, MAl),
+
+
+            Map.entry(-5, PAl),
+            Map.entry(-3, DHAl),
+            Map.entry(-1, NEEl),
+
+            Map.entry(0, SA),
+            Map.entry(2, RE),
+            Map.entry(4, GA),
+            Map.entry(5, MA),
+            Map.entry(7, PA),
+            Map.entry(9, DHA),
+            Map.entry(11, NEE),
+            Map.entry(12, SAh), //Octave
+
+            Map.entry(14, REh),
+            Map.entry(16, GAh),
+            Map.entry(17, MAh),
+
+            Map.entry(19, PAh),
+            Map.entry(21, DHAh),
+            Map.entry(23, NEEh),
+            Map.entry(24, SAhh)
     );
 
 //  48  50  52         53         55        57             59    60(Derived)
@@ -132,6 +176,39 @@ public interface Alankars {
                             List.of(
                                     SAh,NEE,DHA,NEE,DHA,PA,     NEE,DHA,PA,DHA,PA,MA,    DHA,PA,MA,PA,MA,GA,      PA,MA,GA,MA,GA,RE,
                                     MA,GA,RE,GA,RE,SA,        GA,RE,SA,RE,SA,NEEl,       RE,SA,NEEl,SA,NEEl,DHAl,     SA,NEEl,DHAl,NEEl,DHAl,PAl)
+                    )
+            ),
+
+            Map.entry(
+                    "ALK_9",
+                    List.of(
+                            List.of(
+                                    SA,RE,GA, RE,GA,MA,       RE,GA,MA, SA,RE,GA,        RE,GA,MA, GA,MA,PA,
+                                    GA,MA,PA, RE,GA,MA,       GA,MA,PA,MA,PA,DHA,        MA,PA,DHA, GA,MA,PA,
+                                    MA,PA,DHA,PA,DHA,NEE,     PA,DHA,NEE, MA,PA,DHA,     PA,DHA,NEE,DHA,NEE,SAh,
+                                    DHA,NEE,SAh,PA,DHA,NEE,   DHA,NEE,SAh,NEE,SAh,REh,  NEE,SAh,REh,DHA,NEE,SAh,
+                                    NEE,SAh,REh,SAh,REh,GAh,  SAh,REh,GAh,NEE,SAh,REh,  SAh,REh,GAh,REh,GAh,MAh,
+                                    REh,GAh,MAh,SAh,REh,GAh),
+                            List.of(
+                                    SAh,NEE,DHA,NEE,DHA,PA,     NEE,DHA,PA,SAh,NEE,DHA,   NEE,DHA,PA,DHA,PA,MA,
+                                    DHA,PA,MA,NEE,DHA,PA,       DHA,PA,MA,PA,MA,GA,       PA,MA,GA,DHA,PA,MA,
+                                    PA,MA,GA,MA,GA,RE,        MA,GA,RE,PA,MA,GA,          MA,GA,RE,GA,RE,SA,
+                                    GA,RE,SA,MA,GA,RE,      GA,RE,SA,RE,SA,NEEl,     RE,SA,NEEl,GA,RE,SA,
+                                    RE,SA,NEEl,SA,NEEl,DHAl,   SA,NEEl,DHAl,RE,SA,NEEl, SA,NEEl,DHAl,NEEl,DHAl,PAl,
+                                    NEEl,DHAl,PAl, SA,NEEl,DHAl )
+                    )
+            ),
+            Map.entry(
+                    "ALK_10",
+                    List.of(
+                            List.of(
+                                    SA,RE,GA,RE,GA,NEEl,SA,        RE,GA,MA,GA,MA,SA,RE,          GA, MA,PA,MA,PA,RE,GA,
+                                    MA,PA,DHA,PA,DHA,GA,MA,       PA,DHA,NEE,DHA,NEE,MA,PA,      DHA,NEE,SAh,NEE,SAh,PA,DHA,
+                                    NEE,SAh,REh,SAh,REh,DHA,NEE,  SAh,REh,GAh,REh,GAh,NEE,SAh ),
+                            List.of(
+                                    SAh,NEE,DHA,NEE,DHA,REh,SAh,     NEE,DHA,PA,DHA,PA,SA,NEE,    DHA,PA,MA,PA,MA,NEE,DHA,
+                                    PA,MA,GA,MA,GA,DHA,PA,           MA,GA,RE,GA,RE,PA,MA,        GA,RE,SA,RE,SA,MA,GA,
+                                    RE,SA,NEEl,SA,NEEl,GA,RE,        SA,NEEl,DHAl,NEEl,DHAl,RE,SA)
                     )
             )
     );

@@ -9,6 +9,8 @@ import jm.music.data.Part;
 import jm.music.data.Phrase;
 import jm.music.data.Score;
 import jm.util.Play;
+import jm.util.View;
+import jm.util.Write;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,7 @@ import java.lang.reflect.Field;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.swar.swaranjali.constants.Alankars.VAL_TO_SARGAM;
 import static com.swar.swaranjali.constants.Formula.*;
 import static java.util.Collections.reverse;
 
@@ -63,8 +66,8 @@ public class SwaranjaliController {
             List<Integer> alankar1DscDerived = scaleService.deriveScaleNotesForDownAlakar(
                     arovaAndAvrohaList.get(1), scaleNotes, pitchValue, numberOfOctaves, rhythmArray.length);
 
-            printNotes(alankar1AscDerived);
-            printNotes(alankar1DscDerived);
+            printNotes(alankar1AscDerived, alankar1AscDerived.get(0));
+            printNotes(alankar1DscDerived, alankar1AscDerived.get(0));
 
             Field instrumentField = ProgramChanges.class.getField(instrument);
             int instrumentValue = instrumentField.getInt(ProgramChanges.class);
@@ -87,17 +90,92 @@ public class SwaranjaliController {
             dscPart.addPhrase(phraseDsc);
 
             Score score = new Score( key, tempo);
-            score.insertPart(ascPart, 0);
-            score.insertPart(dscPart, 1);
+            score.addPart(ascPart);
+            score.addPart(dscPart);
 
 
+           // View.sketch(score);
+         //   Write.midi(score, "alk-9.mid");
             Play.midi(score);
+
+
 
         }
 
 
         return null;
     }
+
+
+//    @GetMapping("/play")
+//    public ResponseEntity<List<String>> playAlankar(
+//            @RequestParam String key,
+//            @RequestParam String scale,
+//            @RequestParam int numberOfOctaves,
+//            @RequestParam int pitch,
+//            @RequestParam List<String> alankarNameList,
+//            @RequestParam int tempo,
+//            @RequestParam String instrument) throws Exception {
+//
+//        Thread.sleep(1000);
+//        for(String alankarName : alankarNameList) {
+//            //Retrieve the scale notes for number of Octaves
+//            List<Integer> scaleNotes = scaleService.retrieveScaleNotesForNumOfOctaves(key, scale, pitch, numberOfOctaves);
+//
+//            List<List<String>> arovaAndAvrohaList = Alankars.ALK_SARGAM_COLLECTION.get(alankarName);
+//
+//            //  List<List<Integer>> upAndDownAlankar = Alankars.ALK_COLLECTION.get(alankarName);
+//
+//            Field pitchField = Pitches.class.getField(key + pitch);
+//            int pitchValue = pitchField.getInt(Pitches.class);
+//
+//            Map<Integer, List<Double>> octaveRhythm = Rhythms.RHYTHM_COLLECTION.get(alankarName);
+//            double[] rhythmArray = octaveRhythm.get(numberOfOctaves).stream().mapToDouble(i->i).toArray();
+//
+//            List<Integer> alankar1AscDerived = scaleService.deriveScaleNotesForUpAlakar(
+//                    arovaAndAvrohaList.get(0), scaleNotes, numberOfOctaves, rhythmArray.length);
+//
+//            reverse(scaleNotes);
+//
+//            List<Integer> alankar1DscDerived = scaleService.deriveScaleNotesForDownAlakar(
+//                    arovaAndAvrohaList.get(1), scaleNotes, pitchValue, numberOfOctaves, rhythmArray.length);
+//
+//            printNotes(alankar1AscDerived);
+//            printNotes(alankar1DscDerived);
+//
+//            Field instrumentField = ProgramChanges.class.getField(instrument);
+//            int instrumentValue = instrumentField.getInt(ProgramChanges.class);
+//            //Ascending
+//            Phrase phraseAsc = new Phrase(0.0);
+//            int[] aaroh = alankar1AscDerived.stream().mapToInt(i->i).toArray();
+//            phraseAsc.addNoteList(aaroh, rhythmArray);
+//            //Part ascPart = new Part(phraseAsc);
+//            Part ascPart = new Part("phraseAsc", instrumentValue);
+//            ascPart.addPhrase(phraseAsc);
+//
+//            //Descending Phrase
+//            Phrase phraseDsc = new Phrase();
+//            phraseDsc.setStartTime(phraseAsc.getEndTime());
+//            //Collections.reverse(alankar1AscDerived);
+//            int[] avroh = alankar1DscDerived.stream().mapToInt(i->i).toArray();
+//            phraseDsc.addNoteList(avroh, rhythmArray);
+//            //Part dscPart = new Part(phraseDsc);
+//            Part dscPart = new Part("phraseDsc", instrumentValue);
+//            dscPart.addPhrase(phraseDsc);
+//
+//            Score score = new Score( key, tempo);
+//            score.insertPart(ascPart, 0);
+//            score.insertPart(dscPart, 1);
+//
+//
+//            Write.midi(score, "alk-5.mid");
+//            Play.midi(score);
+//
+//        }
+//
+//
+//        return null;
+//    }
 
     @GetMapping("/identify")
     public ResponseEntity<List<String>> identify(
@@ -270,12 +348,30 @@ public class SwaranjaliController {
         runningNote[0] = note;
     }
 
+    private void printNotes(List<Integer> listOfNotes, int tonicNote) {
+        System.out.println(
+                listOfNotes.stream()
+                        .map(
+                                note -> getSargamName(note - tonicNote))
+
+                        .collect(Collectors.joining(", ", "{", "}")));
+    }
+
     private void printNotes(List<Integer> listOfNotes) {
         System.out.println(
                 listOfNotes.stream()
                         .map(
                                 note -> getNoteName(note))
+
                         .collect(Collectors.joining(", ", "{", "}")));
+    }
+
+    private String getSargamName(int noteKey) {
+        String noteNameToReturn = "NOT_FOUND";
+        if(VAL_TO_SARGAM.containsKey(noteKey)) {
+            return VAL_TO_SARGAM.get(noteKey);
+        }
+        return noteNameToReturn;
     }
 
     private String getNoteName(int noteValue) {
