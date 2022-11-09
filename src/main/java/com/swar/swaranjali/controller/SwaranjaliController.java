@@ -96,7 +96,7 @@ public class SwaranjaliController {
 
            // View.sketch(score);
          //   Write.midi(score, "alk-9.mid");
-            Play.midi(score);
+            Play.midi(score, false);
 
 
 
@@ -169,7 +169,7 @@ public class SwaranjaliController {
 //
 //
 //            Write.midi(score, "alk-5.mid");
-//            Play.midi(score);
+//            Play.midi(score, false);
 //
 //        }
 //
@@ -212,7 +212,7 @@ public class SwaranjaliController {
 
 
 
-        Play.midi(score);
+        Play.midi(score, false);
 
         Scanner myObj = new Scanner(System.in);  // Create a Scanner object
         System.out.println("Enter to repeat");
@@ -224,7 +224,7 @@ public class SwaranjaliController {
             }
             printNotes(randomNotesList);
             Thread.sleep(1000);
-            Play.midi(score);
+            Play.midi(score, false);
             exit = myObj.nextInt();
         }
 
@@ -271,7 +271,7 @@ public class SwaranjaliController {
 
 
 
-        Play.midi(score);
+        Play.midi(score, false);
 
         Scanner myObj = new Scanner(System.in);  // Create a Scanner object
         System.out.println("Enter to repeat");
@@ -283,7 +283,7 @@ public class SwaranjaliController {
             }
             printNotes(selectedNotesList);
             Thread.sleep(1000);
-            Play.midi(score);
+            Play.midi(score, false);
             exit = myObj.nextInt();
         }
 

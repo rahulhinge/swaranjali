@@ -53,11 +53,16 @@ public class ScaleService {
         Map<Integer, Integer> scaledAlankarNotesSet = new HashMap();
         for(int alankarNotePosition : sorted) {
             try {
-                scaledAlankarNotesSet.put(alankarNotePosition, scaleNotes.get(counter) );
+                if(alankarNotePosition < 0) {
+                    scaledAlankarNotesSet.put(alankarNotePosition, scaleNotes.get(counter) + alankarNotePosition);
+                } else {
+                    scaledAlankarNotesSet.put(alankarNotePosition, scaleNotes.get(counter));
+                    counter++;
+                }
             } catch (IndexOutOfBoundsException e) {
                 scaledAlankarNotesSet.put(alankarNotePosition, scaleNotes.get(0) +  alankarNotePosition);
             }
-            counter++;
+
         }
 
         List<Integer> aaroh = upAlankar.stream().map(note -> scaledAlankarNotesSet.get(note)).collect(Collectors.toList());
@@ -101,11 +106,20 @@ public class ScaleService {
         Map<Integer, Integer> scaledAlankarNotesSet = new HashMap();
         for(int alankarNotePosition : sorted) {
             try {
-                scaledAlankarNotesSet.put(alankarNotePosition, scaleNotes.get(counter) );
+                if(alankarNotePosition > 12) {
+                    scaledAlankarNotesSet.put(alankarNotePosition, scaleNotes.get(counter) + (alankarNotePosition -12));
+                } else if(alankarNotePosition < 0) {
+                    scaledAlankarNotesSet.put(alankarNotePosition, scaleNotes.get(7) + (alankarNotePosition));
+                }
+                else {
+                    scaledAlankarNotesSet.put(alankarNotePosition, scaleNotes.get(counter) );
+                    counter++;
+                }
+
             } catch (IndexOutOfBoundsException e) {
                 scaledAlankarNotesSet.put(alankarNotePosition, (scaleNotes.get(0) - numOfOctaves * 12) +  alankarNotePosition);
             }
-            counter++;
+
         }
 
 

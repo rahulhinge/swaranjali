@@ -140,9 +140,11 @@ public interface Rhythms {
                                     C,C,C,C,C,C,C,  C,C,C,C,C,C,C,  C,C,C,C,C,C,C,
                                     C,C,C,C,C,C,C,  C,C,C,C,C,C,HALF_NOTE  ),
                             2, List.of(
-                                    C,C,C,C,C,C,   C,C,C,C,C,C,  C,C,C,C,C,C,  C,C,C,C,C,C,
-                                    C,C,C,C,C,C,   C,C,C,C,C,C,  C,C,C,C,C,C,  C,C,C,C,C,C,
-                                    C,C,C,C,C,C,   C,C,C,C,C,C,  C,C,C,C,C,C,  C,C,C,C,C,HALF_NOTE  ))
+                                    C,C,C,C,C,C,C,  C,C,C,C,C,C,C,  C,C,C,C,C,C,C,
+                                    C,C,C,C,C,C,C,  C,C,C,C,C,C,C,  C,C,C,C,C,C,C,
+                                    C,C,C,C,C,C,C,  C,C,C,C,C,C,C,  C,C,C,C,C,C,C,
+                                    C,C,C,C,C,C,C,  C,C,C,C,C,C,C,  C,C,C,C,C,C,C,
+                                    C,C,C,C,C,C,C,  C,C,C,C,C,C,HALF_NOTE   ))
             ),
 
             Map.entry(
