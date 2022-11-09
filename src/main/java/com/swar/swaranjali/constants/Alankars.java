@@ -210,16 +210,20 @@ public interface Alankars {
                                     PA,MA,GA,MA,GA,DHA,PA,           MA,GA,RE,GA,RE,PA,MA,        GA,RE,SA,RE,SA,MA,GA,
                                     RE,SA,NEEl,SA,NEEl,GA,RE,        SA,NEEl,DHAl,NEEl,DHAl,RE,SA)
                     )
+            ),
+            Map.entry(
+                    "ALK_11",
+                    List.of(
+                            List.of(
+                                    SA,RE,GA,GA,RE,SA,        RE,GA,MA,MA,GA,RE,          GA, MA,PA,PA,MA,GA,
+                                    MA,PA,DHA,DHA,PA,MA,       PA,DHA,NEE,NEE,DHA,PA,      DHA,NEE,SAh,SAh,NEE,DHA,
+                                    NEE,SAh,REh,REh,SAh,NEE,  SAh,REh,GAh,GAh,REh,SAh ),
+                            List.of(
+                                    SAh,NEE,DHA,DHA,NEE,SAh,     NEE,DHA,PA,PA,DHA,NEE,    DHA,PA,MA,MA,PA,DHA,
+                                    PA,MA,GA,GA,MA,PA,           MA,GA,RE,RE,GA,MA,        GA,RE,SA,SA,RE,GA,
+                                    RE,SA,NEEl,NEEl,SA,RE,        SA,NEEl,DHAl,DHAl,NEEl,SA)
+                    )
             )
-//            Map.entry(
-//                    "ALK_10",
-//                    List.of(
-//                            List.of(
-//                                    SA,RE,GA,RE,GA,NEEl,SA),
-//                            List.of(
-//                                    SAh,NEE,DHA,NEE,DHA,REh,SAh)
-//                    )
-//            )
     );
 
 

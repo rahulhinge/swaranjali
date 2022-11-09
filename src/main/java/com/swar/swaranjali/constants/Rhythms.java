@@ -146,7 +146,18 @@ public interface Rhythms {
                                     C,C,C,C,C,C,C,  C,C,C,C,C,C,C,  C,C,C,C,C,C,C,
                                     C,C,C,C,C,C,C,  C,C,C,C,C,C,HALF_NOTE   ))
             ),
-
+            Map.entry(
+                    "ALK_11",
+                    Map.of( 1, List.of(
+                                    C,C,C,C,C,C,  C,C,C,C,C,C,  C,C,C,C,C,C,
+                                    C,C,C,C,C,C,  C,C,C,C,C,C,  C,C,C,C,C,HALF_NOTE  ),
+                            2, List.of(
+                                    C,C,C,C,C,C,  C,C,C,C,C,C,  C,C,C,C,C,C,
+                                    C,C,C,C,C,C,  C,C,C,C,C,C,  C,C,C,C,C,C,
+                                    C,C,C,C,C,C,  C,C,C,C,C,C,  C,C,C,C,C,C,
+                                    C,C,C,C,C,C,  C,C,C,C,C,C,  C,C,C,C,C,C,
+                                    C,C,C,C,C,HALF_NOTE   ))
+            ),
             Map.entry(
             "IDENTIFY",
             Map.of( 1, List.of(C),
