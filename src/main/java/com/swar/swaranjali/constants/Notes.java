@@ -36,12 +36,12 @@ public class Notes {
     public static final String GAh = "Gah";  // 16
     public static final String MAh = "Mah";  // 17
 
-    public static final String PAhk = "PAhk";  // 18
-    public static final String PAh = "PAh";  // 19
-    public static final String DHAhk = "DHAhk";  // 20
-    public static final String DHAh = "DHAh";  // 21
-    public static final String NEEhk = "NEEhk";  // 22
-    public static final String NEEh = "NEEh";  // 23
-    public static final String SAhh = "SAhh";  // 24
+    public static final String PAhk = "Pahk";  // 18
+    public static final String PAh = "Pah";  // 19
+    public static final String DHAhk = "Dhahk";  // 20
+    public static final String DHAh = "Dhah";  // 21
+    public static final String NEEhk = "Neehk";  // 22
+    public static final String NEEh = "Neeh";  // 23
+    public static final String SAhh = "Sahh";  // 24
 
 }

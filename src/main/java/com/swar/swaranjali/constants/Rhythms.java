@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import static jm.constants.Durations.C;
+import static jm.constants.Durations.CD;
 import static jm.constants.Durations.HALF_NOTE;
 
 public interface Rhythms {
@@ -164,7 +165,6 @@ public interface Rhythms {
                                     C,C,C,C,C,C,C,C,  C,C,C,C,C,C,C,C,
                                     C,C,C,C,C,C,C,C,  C,C,C,C,C,C,C,C,
                                     C,C,C,C,C,C,C,C,  C,C,C,C,C,C,C,C,
-                                    C,C,C,C,C,C,C,C,  C,C,C,C,C,C,C,C,
                                     C,C,C,C,C,C,C,C,  C,C,C,C,C,C,C,HALF_NOTE  ),
                             2, List.of(
                                     C,C,C,C,C,C,C,C,  C,C,C,C,C,C,C,C,
@@ -174,8 +174,20 @@ public interface Rhythms {
                                     C,C,C,C,C,C,C,C,  C,C,C,C,C,C,C,C,
                                     C,C,C,C,C,C,C,C,  C,C,C,C,C,C,C,C,
                                     C,C,C,C,C,C,C,C,  C,C,C,C,C,C,C,C,
-                                    C,C,C,C,C,C,C,C,  C,C,C,C,C,C,C,C,
-                                    C,C,C,C,C,C,C,C,  C,C,C,C,C,C,C,HALF_NOTE   ))
+                                    C,C,C,C,C,C,C,HALF_NOTE   ))
+            ),
+            Map.entry(
+                    "ALK_13",
+                    Map.of( 1, List.of(
+                                    C,C,C,C,CD,C,C,C,C,CD,  C,C,C,C,CD,C,C,C,C,CD,  C,C,C,C,CD,C,C,C,C,C,
+                                    C,C,C,C,CD,C,C,C,C,CD,  C,C,C,C,CD,C,C,C,C,CD,  C,C,C,C,CD,C,C,C,C,CD,
+                                    C,C,C,C,CD,C,C,C,C,CD,  C,C,C,C,CD,C,C,C,C,HALF_NOTE  ),
+                            2, List.of(
+                                    C,C,C,C,CD,C,C,C,C,CD,  C,C,C,C,CD,C,C,C,C,CD,  C,C,C,C,CD,C,C,C,C,CD,
+                                    C,C,C,C,CD,C,C,C,C,CD,  C,C,C,C,CD,C,C,C,C,CD,  C,C,C,C,CD,C,C,C,C,CD,
+                                    C,C,C,C,CD,C,C,C,C,CD,  C,C,C,C,CD,C,C,C,C,CD,  C,C,C,C,CD,C,C,C,C,CD,
+                                    C,C,C,C,CD,C,C,C,C,CD,  C,C,C,C,CD,C,C,C,C,CD,  C,C,C,C,CD,C,C,C,C,CD,
+                                    C,C,C,C,CD,C,C,C,C,CD,  C,C,C,C,CD,C,C,C,C,CD,   C,C,C,C,CD,C,C,C,C,HALF_NOTE   ))
             ),
             Map.entry(
             "IDENTIFY",

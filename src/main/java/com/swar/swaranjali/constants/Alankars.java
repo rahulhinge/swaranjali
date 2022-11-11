@@ -270,7 +270,26 @@ public interface Alankars {
                                     NEEl,SA,NEEl,RE,SA,NEEl,GA,RE,       DHAl,NEEl,DHAl,SA,NEEl,DHAl,RE,SA
                                     )
                     )
+            ),
+            Map.entry(
+                    "ALK_13",
+                    List.of(
+                            List.of(
+                                    SA,RE,GA,RE,SA,       GA,RE,SA,GA,RE,       RE,GA,MA,GA,RE,        MA,GA,RE,MA,GA,
+                                    GA,MA,PA,MA,GA,       PA,MA,GA,PA,MA,       MA,PA,DHA,PA,MA,       DHA,PA,MA,DHA,PA,
+                                    PA,DHA,NEE,DHA,PA,    NEE,DHA,PA,NEE,DHA,   DHA,NEE,SAh,NEE,DHA,   SAh,NEE,DHA,SAh,NEE,
+                                    NEE,SAh,REh,SAh,NEE,  REh,SAh,NEE,REh,SAh,  SAh,REh,GAh,REh,SAh,   GAh,REh,SAh,GAh,REh
+                            ),
+                            List.of(
+                                    SAh,NEE,DHA,NEE,SAh,   DHA,NEE,SAh,DHA,NEE,  NEE,DHA,PA,DHA,NEE,   PA,DHA,NEE,PA,DHA,
+                                    DHA,PA,MA,PA,DHA,      MA,PA,DHA,MA,PA,      PA,MA,GA,MA,PA,       GA,MA,PA,GA,MA,
+                                    MA,GA,RE,GA,MA,        RE,GA,MA,RE,GA,       GA,RE,SA,RE,GA,       SA,RE,GA,SA,RE,
+                                    RE,SA,NEEl,SA,RE,      NEEl,SA,RE,NEEl,SA,   SA,NEEl,DHAl,NEEl,SA, DHAl,NEEl,SA,DHAl,NEEl
+                            )
+                    )
             )
+
+
     );
 
 
