@@ -34,16 +34,18 @@ public class SwaranjaliController {
     ScaleService scaleService;
 
     @GetMapping("/play")
-    public ResponseEntity<List<String>> playAlankar(
+    public ResponseEntity<List<List<Integer>>> playAlankar(
             @RequestParam String key,
             @RequestParam String scale,
             @RequestParam int numberOfOctaves,
             @RequestParam int pitch,
             @RequestParam List<String> alankarNameList,
             @RequestParam int tempo,
-            @RequestParam String instrument) throws Exception {
+            @RequestParam String instrument,
+            @RequestParam boolean playMidi) throws Exception {
 
         Thread.sleep(1000);
+        List<List<Integer>>  output = new ArrayList<>();
         for(String alankarName : alankarNameList) {
             //Retrieve the scale notes for number of Octaves
             List<Integer> scaleNotes = scaleService.retrieveScaleNotesForNumOfOctaves(key, scale, pitch, numberOfOctaves);
@@ -67,7 +69,9 @@ public class SwaranjaliController {
                     arovaAndAvrohaList.get(1), scaleNotes, pitchValue, numberOfOctaves, rhythmArray.length);
 
             printNotes(alankar1AscDerived, alankar1AscDerived.get(0));
+            //printNotes(alankar1AscDerived);
             printNotes(alankar1DscDerived, alankar1AscDerived.get(0));
+            //printNotes(alankar1DscDerived);
 
             Field instrumentField = ProgramChanges.class.getField(instrument);
             int instrumentValue = instrumentField.getInt(ProgramChanges.class);
@@ -96,14 +100,17 @@ public class SwaranjaliController {
 
            // View.sketch(score);
          //   Write.midi(score, "alk-9.mid");
-            Play.midi(score, false);
+            if(playMidi) {
+                Play.midi(score, false);
+            }
 
+
+            output.add(alankar1AscDerived);
+            output.add(alankar1DscDerived);
 
 
         }
-
-
-        return null;
+        return ResponseEntity.ok(output);
     }
 
 

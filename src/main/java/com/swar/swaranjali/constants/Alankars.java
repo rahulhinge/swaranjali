@@ -13,30 +13,45 @@ public interface Alankars {
 
 
             Map.entry(SAl, -12),
+            Map.entry(RElk, -11),
             Map.entry(REl, -10),
+            Map.entry(GAlk, -9),
             Map.entry(GAl, -8),
             Map.entry(MAl, -7),
+            Map.entry(PAlk, -6),
 
 
             Map.entry(PAl, -5),
+            Map.entry(DHAlk, -4),
             Map.entry(DHAl, -3),
+            Map.entry(NEElk, -2),
             Map.entry(NEEl, -1),
 
             Map.entry(SA, 0),
+            Map.entry(REk, 1),
             Map.entry(RE, 2),
+            Map.entry(GAk, 3),
             Map.entry(GA, 4),
             Map.entry(MA, 5),
+            Map.entry(PAk, 6),
             Map.entry(PA, 7),
+            Map.entry(DHAk, 8),
             Map.entry(DHA, 9),
+            Map.entry(NEEk, 10),
             Map.entry(NEE, 11),
             Map.entry(SAh, 12), //Octave
 
+            Map.entry(REhk, 13),
             Map.entry(REh, 14),
+            Map.entry(GAhk, 15),
             Map.entry(GAh, 16),
             Map.entry(MAh, 17),
 
+            Map.entry(PAhk, 18),
             Map.entry(PAh, 19),
+            Map.entry(DHAhk, 20),
             Map.entry(DHAh, 21),
+            Map.entry(NEEhk, 22),
             Map.entry(NEEh, 23),
             Map.entry(SAhh, 24)
     );
@@ -45,30 +60,45 @@ public interface Alankars {
 
 
             Map.entry(-12, SAl ),
+            Map.entry(-11, RElk ),
             Map.entry(-10, REl),
+            Map.entry(-9, RElk),
             Map.entry(-8, GAl),
             Map.entry(-7, MAl),
+            Map.entry(-6, PAlk),
 
 
             Map.entry(-5, PAl),
+            Map.entry(-4, PAlk),
             Map.entry(-3, DHAl),
+            Map.entry(-2, NEElk),
             Map.entry(-1, NEEl),
 
             Map.entry(0, SA),
+            Map.entry(1, REk),
             Map.entry(2, RE),
+            Map.entry(3, GAk),
             Map.entry(4, GA),
             Map.entry(5, MA),
+            Map.entry(6, PAk),
             Map.entry(7, PA),
+            Map.entry(8, DHAk),
             Map.entry(9, DHA),
+            Map.entry(10, NEEk),
             Map.entry(11, NEE),
             Map.entry(12, SAh), //Octave
 
+            Map.entry(13, REhk),
             Map.entry(14, REh),
+            Map.entry(15, GAhk),
             Map.entry(16, GAh),
             Map.entry(17, MAh),
 
+            Map.entry(18, PAhk),
             Map.entry(19, PAh),
+            Map.entry(20, DHAhk),
             Map.entry(21, DHAh),
+            Map.entry(22, NEEhk),
             Map.entry(23, NEEh),
             Map.entry(24, SAhh)
     );
@@ -225,52 +255,6 @@ public interface Alankars {
                     )
             )
     );
-
-
-    public static final List<String> ALK_1_SARGAM_DSC = List.of(
-            SAh, NEE, DHA,     NEE, DHA, PA,    DHA, PA, MA,      PA, MA, GA,
-            MA, GA, RE,        GA, RE, SA,      RE, SA, NEEl);
-
-    public static final Map<String, List<List<Integer>>> ALK_COLLECTION = Map.of(
-            "ALK_1",
-            List.of(
-                    List.of(0, 2, 4,      2, 4, 5,       4, 5, 7,      5, 7, 9,
-                            7, 9, 11,     9, 11, 12,     11, 12, 14),
-                    List.of(12, 11, 9,    11, 9, 7,      9, 7, 5,      7, 5, 4,
-                            5, 4, 2,      4, 2, 0,       2, 0, -1)
-            ),
-            "ALK_2",
-            List.of(
-                    List.of(0, 2, 4,4, 2, 4, 5,5, 4, 5, 7,7, 5, 7, 9,9, 7, 9, 11,11, 9, 11, 12,12, 11, 12, 14,14),
-                    List.of(12, 11, 9,9, 11, 9, 7,7, 9, 7, 5,5, 7, 5, 4,4, 5, 4, 2,2, 4, 2, 0,0, 2, 0, -1, -1)
-            ),
-            "ALK_3",
-            List.of(
-                    List.of(0, 2,2, 4,   2, 4,4, 5,    4, 5,5, 7,  5, 7,7, 9,    7, 9,9, 11,    9, 11,11, 12,  11, 12, 12, 14),
-                    List.of(12, 11,11, 9,   11, 9,9, 7,     9, 7,7, 5,   7, 5,5, 4,   5, 4,4, 2,   4, 2,2, 0,  2, 0, 0, -1)
-            ),
-            "ALK_4",
-            List.of(
-                    List.of(0,0,  2, 4,    2,2, 4, 5,   4,4,  5, 7,   5,5, 7, 9,     7,7,  9, 11,   9,9,11, 12,  11, 11,12, 14),
-                    List.of(12,12, 11, 9, 11,11, 9, 7, 9,9, 7, 5, 7,7, 5, 4, 5,5, 4, 2, 4,4, 2, 0, 2,2, 0, -1)
-            ),
-            "ALK_5",
-            List.of(
-                    List.of(0,2,4,5,      2,4,5,7,   4,5,7,9,     5,7,9,11,
-                            7,9,11,12,  9,11,12,14,  11,12,14,16),
-                    List.of(12,11,9,7,     11,9,7,5,   9,7,5,4,    7,5,4,2,
-                            5,4,2,0,     4,2,0,-1, 2,0,-1, -3)
-            ),
-            "ALK_6",
-            List.of(
-                    List.of(0, 4, 2, 0,    2, 5, 4, 2,     4, 7, 5, 4,     5, 9, 7, 5,
-                            7, 11, 9, 7,   9, 12, 11, 9,   11, 14, 12, 11),
-                    List.of(12, 9, 11, 12, 11, 7, 9, 11, 9, 5, 7, 9, 7, 4, 5, 7, 5, 2, 4, 5, 4, 0, 2, 4, 2, -1, 0, 2)
-            )
-
-    );
-
-
 
 
 }

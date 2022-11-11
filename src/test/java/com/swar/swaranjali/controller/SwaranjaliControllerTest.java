@@ -9,6 +9,8 @@ import org.assertj.core.api.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Arrays;
@@ -21,9 +23,11 @@ import static jm.constants.Pitches.*;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 class SwaranjaliControllerTest {
 
-    private SwaranjaliController swaranjaliController = new SwaranjaliController();
+    @Autowired
+    private SwaranjaliController swaranjaliController;
 
     @BeforeEach
     void setUp() {
@@ -34,26 +38,10 @@ class SwaranjaliControllerTest {
     }
 
     @Test
-    void getMajorScaleForC() {
-        ResponseEntity<List<String>> result = swaranjaliController.getScale("C", "major");
-        List<String> cMajor = Arrays.asList(new String[]{"C","D", "E", "F", "G", "A", "B", "C"});
-        assertThat(result.getBody()).isEqualTo(cMajor);
+    public void palyCMajorAlk_0_1Octave() throws Exception {
+        swaranjaliController.playAlankar("C", "MAJOR_SCALE", 1, 3, List.of("ALK_0"),
+                120, "AC_GUITAR", false);
     }
 
-    @Test
-    void getMinorScaleForC() {
-        ResponseEntity<List<String>> result = swaranjaliController.getScale("C", "minor");
-        List<String> cMinor = Arrays.asList(new String[]{"C","D", "Eb", "F", "G", "Ab", "Bb", "C"});
-        assertThat(result.getBody()).isEqualTo(cMinor);
-    }
 
-    @Test
-    void payANote() throws Exception {
-
-        swaranjaliController.playAlankar("C", "MAJOR_SCALE", 2,3,List.of("ALK_1"), 120, "ACOUSTIC_GUITAR");
-//        Thread.sleep(2000);
-//        swaranjaliController.playAlankar("D", 3,"ALK_1", 120);
-//        Thread.sleep(2000);
-//        swaranjaliController.playAlankar("E", 3,"ALK_1", 120);
-    }
 }

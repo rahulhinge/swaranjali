@@ -24,6 +24,7 @@ public class ScaleService {
         Field pitchField = Pitches.class.getField(key + pitch);
         //Integer pitchValue = pitchField.getInt(Pitches.class);
         final AtomicInteger pitchValue = new AtomicInteger(pitchField.getInt(Pitches.class));
+        int startingPitch = pitchValue.get();
 
         List<List<Integer>> octaveScaleNotes = new ArrayList<>();
         for(int i=1; i<= numberOfOctaves; i++) {
@@ -39,6 +40,8 @@ public class ScaleService {
                 octaveScaleNotes.stream()
                         .flatMap(List::stream)
                         .collect(Collectors.toList());
+
+        alaknakUpNotesInScale.add(startingPitch + (12 * numberOfOctaves));
         return alaknakUpNotesInScale;
     }
 
@@ -54,7 +57,10 @@ public class ScaleService {
         for(int alankarNotePosition : sorted) {
             try {
                 if(alankarNotePosition < 0) {
-                    scaledAlankarNotesSet.put(alankarNotePosition, scaleNotes.get(counter) + alankarNotePosition);
+                    int lastNote = scaleNotes.size() - 1;
+                    int majorMinorDifference = scaleNotes.get(lastNote) - scaleNotes.get(lastNote + alankarNotePosition);
+                    //Above is needed to check major note or Komal note
+                    scaledAlankarNotesSet.put(alankarNotePosition, scaleNotes.get(counter) - majorMinorDifference);
                 } else {
                     scaledAlankarNotesSet.put(alankarNotePosition, scaleNotes.get(counter));
                     counter++;
@@ -71,18 +77,7 @@ public class ScaleService {
             List<Integer> secondOctave = aaroh.stream().skip(notesPerBar).map( note -> note+12).collect(Collectors.toList());
             aaroh.addAll(secondOctave);
         }
-//        int lastOctaveValue = aaroh.get(0) + 12 * numOfOctaves;
-//        //int[] aarohArray = aaroh.stream().filter(num -> num <= lastOctaveValue ).mapToInt(num->num).toArray();
-//        List<Integer> aarohList = aaroh.stream().filter(num -> num <= lastOctaveValue ).mapToInt(num->num).boxed().collect(Collectors.toList());
-//        int cutOfIndex = aarohList.size();
-//        for(int i=0; i<aarohList.size(); i++) {
-//
-//            if(aarohList.get(i) == lastOctaveValue && aarohList.get(i+1) < lastOctaveValue) {
-//                cutOfIndex = i+1;
-//                break;
-//            }
-//        }
-//        aarohList = aarohList.subList(0, cutOfIndex);
+
         if(aaroh.size() > alankarCutOffForOctave) {
             aaroh = aaroh.subList(0, alankarCutOffForOctave);
         }
@@ -99,7 +94,7 @@ public class ScaleService {
         List<Integer> downAlankar = downAlankarSargam.stream().map(
                 note -> ALANKAR_KEYS_VAL.get(note)).collect(Collectors.toList());
         NavigableSet<Integer> sorted = new TreeSet<>(downAlankar).descendingSet();
-        scaleNotes.add(0, pitchValue + 12 * numOfOctaves);
+        //scaleNotes.add(0, pitchValue + 12 * numOfOctaves);
 
 
         int counter = 0;
@@ -108,8 +103,8 @@ public class ScaleService {
             try {
                 if(alankarNotePosition > 12) {
                     scaledAlankarNotesSet.put(alankarNotePosition, scaleNotes.get(counter) + (alankarNotePosition -12));
-                } else if(alankarNotePosition < 0) {
-                    scaledAlankarNotesSet.put(alankarNotePosition, scaleNotes.get(7) + (alankarNotePosition));
+//                } else if(alankarNotePosition < 0) {
+//                    scaledAlankarNotesSet.put(alankarNotePosition, scaleNotes.get(7) + (alankarNotePosition));
                 }
                 else {
                     scaledAlankarNotesSet.put(alankarNotePosition, scaleNotes.get(counter) );
@@ -130,19 +125,7 @@ public class ScaleService {
             List<Integer> secondOctave = avroh.stream().skip(notesPerBar).map( note -> note-12).collect(Collectors.toList());
             avroh.addAll(secondOctave);
         }
-        // int[] aarohArray = avroh.stream().mapToInt(num->num).toArray();
-//        int lastOctaveValue = pitchValue;
-//        List<Integer> avrohList = avroh.stream().filter(num -> num >= lastOctaveValue ).mapToInt(num->num).boxed().collect(Collectors.toList());
-//
-//        int cutOfIndex = avrohList.size();
-//        for(int i=0; i<avrohList.size(); i++) {
-//
-//            if(avrohList.get(i) == lastOctaveValue && avrohList.get(i+1) > lastOctaveValue) {
-//                cutOfIndex = i+1;
-//                break;
-//            }
-//        }
-//        avrohList = avrohList.subList(0, cutOfIndex);
+
         if(avroh.size() > alankarCutOffForOctave) {
             avroh = avroh.subList(0, alankarCutOffForOctave);
         }
