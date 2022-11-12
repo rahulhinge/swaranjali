@@ -11,7 +11,7 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 
 
 @SpringBootTest
-class SwaranjaliControllerTest {
+class C_Major_SwaranjaliControllerTest {
 
     @Autowired
     private SwaranjaliController swaranjaliController;

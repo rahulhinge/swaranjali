@@ -62,14 +62,14 @@ public interface Alankars {
             Map.entry(-12, SAl ),
             Map.entry(-11, RElk ),
             Map.entry(-10, REl),
-            Map.entry(-9, RElk),
+            Map.entry(-9, GAlk),
             Map.entry(-8, GAl),
             Map.entry(-7, MAl),
             Map.entry(-6, PAlk),
 
 
             Map.entry(-5, PAl),
-            Map.entry(-4, PAlk),
+            Map.entry(-4, DHAlk),
             Map.entry(-3, DHAl),
             Map.entry(-2, NEElk),
             Map.entry(-1, NEEl),
