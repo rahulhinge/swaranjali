@@ -52,15 +52,13 @@ public class ScaleService {
         List<Integer> upAlankar = upAlankarSargam.stream().map(
                 note -> ALANKAR_KEYS_VAL.get(note)).collect(Collectors.toList());
         TreeSet<Integer> sorted = new TreeSet<>(upAlankar);
-        int counter = 0;
+        int counter = 7;
         Map<Integer, Integer> scaledAlankarNotesSet = new HashMap();
         for(int alankarNotePosition : sorted) {
             try {
                 if(alankarNotePosition < 0) {
-                    int lastNote = scaleNotes.size() - 1;
-                    int majorMinorDifference = scaleNotes.get(lastNote) - scaleNotes.get(lastNote + alankarNotePosition);
-                    //Above is needed to check major note or Komal note
-                    scaledAlankarNotesSet.put(alankarNotePosition, scaleNotes.get(counter) - majorMinorDifference);
+                    int index = counter + alankarNotePosition;
+                    scaledAlankarNotesSet.put(alankarNotePosition, scaleNotes.get(index));
                 } else {
                     scaledAlankarNotesSet.put(alankarNotePosition, scaleNotes.get(counter));
                     counter++;
@@ -97,12 +95,12 @@ public class ScaleService {
         //scaleNotes.add(0, pitchValue + 12 * numOfOctaves);
 
 
-        int counter = 0;
+        int counter = 7;
         Map<Integer, Integer> scaledAlankarNotesSet = new HashMap();
         for(int alankarNotePosition : sorted) {
             try {
                 if(alankarNotePosition > 12) {
-                    scaledAlankarNotesSet.put(alankarNotePosition, scaleNotes.get(counter) + (alankarNotePosition -12));
+                    scaledAlankarNotesSet.put(alankarNotePosition, scaleNotes.get(alankarNotePosition) + alankarNotePosition );
 //                } else if(alankarNotePosition < 0) {
 //                    scaledAlankarNotesSet.put(alankarNotePosition, scaleNotes.get(7) + (alankarNotePosition));
                 }
@@ -120,10 +118,12 @@ public class ScaleService {
 
 
         List<Integer> avroh = downAlankar.stream().map(note -> scaledAlankarNotesSet.get(note)).collect(Collectors.toList());
+        final int firstOctSaa = avroh.get(0);
         if(numOfOctaves == 2) {
             int notesPerBar = avroh.size()/8;
-            List<Integer> secondOctave = avroh.stream().skip(notesPerBar).map( note -> note-12).collect(Collectors.toList());
-            avroh.addAll(secondOctave);
+            List<Integer> secondOctave = avroh.stream().limit(7 * notesPerBar).map( note -> note+12).collect(Collectors.toList());
+            //secondOctave.addAll(avroh);
+            avroh.addAll(0, secondOctave);
         }
 
         if(avroh.size() > alankarCutOffForOctave) {

@@ -53,7 +53,12 @@ public interface Alankars {
             Map.entry(DHAh, 21),
             Map.entry(NEEhk, 22),
             Map.entry(NEEh, 23),
-            Map.entry(SAhh, 24)
+            Map.entry(SAhh, 24),
+
+            Map.entry(REhhk, 25),
+            Map.entry(REhh, 26),
+            Map.entry(GAhhk, 27),
+            Map.entry(GAhh, 28)
     );
 
     public static final Map<Integer, String> VAL_TO_SARGAM = Map.ofEntries(
@@ -100,7 +105,12 @@ public interface Alankars {
             Map.entry(21, DHAh),
             Map.entry(22, NEEhk),
             Map.entry(23, NEEh),
-            Map.entry(24, SAhh)
+            Map.entry(24, SAhh),
+
+            Map.entry(25, REhhk),
+            Map.entry(26, REhh),
+            Map.entry(27, GAhhk),
+            Map.entry(28, GAhh)
     );
 
 //  48  50  52         53         55        57             59    60(Derived)

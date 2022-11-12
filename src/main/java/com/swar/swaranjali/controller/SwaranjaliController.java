@@ -48,7 +48,17 @@ public class SwaranjaliController {
         List<List<Integer>>  output = new ArrayList<>();
         for(String alankarName : alankarNameList) {
             //Retrieve the scale notes for number of Octaves
-            List<Integer> scaleNotes = scaleService.retrieveScaleNotesForNumOfOctaves(key, scale, pitch, numberOfOctaves);
+            List<Integer> scaleNotes = scaleService.retrieveScaleNotesForNumOfOctaves(key, scale, pitch, 1);
+            List<Integer> previousOctaveScaleNotes = scaleNotes.stream().limit(scaleNotes.size()-1).map(note -> note - 12).collect(Collectors.toList());
+            List<Integer> nextOctaveScaleNotes = scaleNotes.stream().skip(1).map(note -> note + 12).collect(Collectors.toList());
+
+           List threeOctaveNotes = new ArrayList();
+           threeOctaveNotes.addAll(previousOctaveScaleNotes);
+           threeOctaveNotes.addAll(scaleNotes);
+           //if(numberOfOctaves == 1) {
+               threeOctaveNotes.addAll(nextOctaveScaleNotes);
+          // }
+
 
             List<List<String>> arovaAndAvrohaList = Alankars.ALK_SARGAM_COLLECTION.get(alankarName);
 
@@ -61,16 +71,16 @@ public class SwaranjaliController {
             double[] rhythmArray = octaveRhythm.get(numberOfOctaves).stream().mapToDouble(i->i).toArray();
 
             List<Integer> alankar1AscDerived = scaleService.deriveScaleNotesForUpAlakar(
-                    arovaAndAvrohaList.get(0), scaleNotes, numberOfOctaves, rhythmArray.length);
+                    arovaAndAvrohaList.get(0), threeOctaveNotes, numberOfOctaves, rhythmArray.length);
 
-            reverse(scaleNotes);
+            reverse(threeOctaveNotes);
 
             List<Integer> alankar1DscDerived = scaleService.deriveScaleNotesForDownAlakar(
-                    arovaAndAvrohaList.get(1), scaleNotes, pitchValue, numberOfOctaves, rhythmArray.length);
+                    arovaAndAvrohaList.get(1), threeOctaveNotes, pitchValue, numberOfOctaves, rhythmArray.length);
 
-            printNotes(alankar1AscDerived, alankar1AscDerived.get(0));
+            printNotes(alankar1AscDerived, pitchValue);
             //printNotes(alankar1AscDerived);
-            printNotes(alankar1DscDerived, alankar1AscDerived.get(0));
+            printNotes(alankar1DscDerived, pitchValue);
             //printNotes(alankar1DscDerived);
 
             Field instrumentField = ProgramChanges.class.getField(instrument);

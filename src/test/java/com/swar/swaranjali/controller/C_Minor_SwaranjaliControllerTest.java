@@ -414,8 +414,8 @@ class C_Minor_SwaranjaliControllerTest {
     //@Disabled
     public void palyCMajorAlk_10_One_Octave() throws Exception {
 
-        String expectedArroh = "{Sa, Re, Gak, Re, Gak, Neelk, Sa, Re, Gak, Ma, Gak, Ma, Sa, Re, Gak, Ma, Pa, Ma, Pa, Re, Gak, Ma, Pa, Dhak, Pa, Dhak, Gak, Ma, Pa, Dhak, Neek, Dhak, Neek, Ma, Pa, Dhak, Neek, Saa, Neek, Saa, Pa, Dhak, Neek, Saa, Reh, Saa, Reh, Dhak, Neek, Saa, Reh, GAhk, Reh, GAhk, Neek, Saa}";
-        String expectedAvroh = "{Saa, Neek, Dhak, Neek, Dhak, Reh, Saa, Neek, Dhak, Pa, Dhak, Pa, Saa, Neek, Dhak, Pa, Ma, Pa, Ma, Neek, Dhak, Pa, Ma, Gak, Ma, Gak, Dhak, Pa, Ma, Gak, Re, Gak, Re, Pa, Ma, Gak, Re, Sa, Re, Sa, Ma, Gak, Re, Sa, Neel, Sa, Neel, Gak, Re, Sa, Neel, Dhal, Neel, Dhal, Re, Sa}";
+        String expectedArroh = "{Sa, Re, Gak, Re, Gak, Neelk, Sa, Re, Gak, Ma, Gak, Ma, Sa, Re, Gak, Ma, Pa, Ma, Pa, Re, Gak, Ma, Pa, Dhak, Pa, Dhak, Gak, Ma, Pa, Dhak, Neek, Dhak, Neek, Ma, Pa, Dhak, Neek, Saa, Neek, Saa, Pa, Dhak, Neek, Saa, Reh, Saa, Reh, Dhak, Neek, Saa, Reh, Gahk, Reh, Gahk, Neek, Saa}";
+        String expectedAvroh = "{Saa, Neek, Dhak, Neek, Dhak, Reh, Saa, Neek, Dhak, Pa, Dhak, Pa, Saa, Neek, Dhak, Pa, Ma, Pa, Ma, Neek, Dhak, Pa, Ma, Gak, Ma, Gak, Dhak, Pa, Ma, Gak, Re, Gak, Re, Pa, Ma, Gak, Re, Sa, Re, Sa, Ma, Gak, Re, Sa, Neelk, Sa, Neelk, Gak, Re, Sa, Neelk, Dhalk, Neelk, Dhalk, Re, Sa}";
 
 
         ResponseEntity<List<List<Integer>>> listResponseEntity =
@@ -428,13 +428,12 @@ class C_Minor_SwaranjaliControllerTest {
         assertThat(actualAvrov).isEqualTo(expectedAvroh);
     }
 
-    //TODO Sort out NOT_FOUND
     @Test
     //@Disabled
     public void palyCMajorAlk_10_Two_Octave() throws Exception {
 
-        String expectedArroh = "{Sa, Re, Gak, Re, Gak, Neekl, Sa, Re, Gak, Ma, Gak, Ma, Sa, Re, Gak, Ma, Pa, Ma, Pa, Re, Gak, Ma, Pa, Dhak, Pa, Dhak, Gak, Ma, Pa, Dhak, Neek, Dhak, Neek, Ma, Pa, Dhak, Neek, Saa, Neek, Saa, Pa, Dhak, Neek, Saa, Reh, Saa, Reh, Dhak, Neek, Saa, Reh, Gahk, Reh, Gahk, Neek, Saa, Reh, Gahk, Mah, Gahk, Mah, Saa, Reh, Gahk, Mah, Pah, Mah, Pah, Reh, Gahk, Mah, Pah, Dhahk, Pah, Dhahk, Gahk, Mah, Pah, Dhahk, Neehk, Dhahk, Neehk, Mah, Pah, Dhahk, Neehk, Sahh, Neehk, Sahh, Pah, Dhahk, Neehk, Sahh, NOT_FOUND, Sahh, NOT_FOUND, Dhahk, Neehk}";
-        String expectedAvroh = "{Sahh, Neehk, Dhahk, Neehk, Dhahk, NOT_FOUND, Sahh, Neehk, Dhahk, Pah, Dhahk, Pah, Sahh, Neehk, Dhahk, Pah, Mah, Pah, Mah, Neehk, Dhahk, Pah, Mah, Gahk, Mah, Gahk, Dhahk, Pah, Mah, Gahk, Reh, Gahk, Reh, Pah, Mah, Gahk, Reh, Saa, Reh, Saa, Mah, Gahk, Reh, Saa, Neek, Saa, Neek, Gahk, Reh, Saa, Neek, Dhak, Neek, Dhak, Reh, Saa, Neek, Dhak, Pa, Dhak, Pa, Saa, Neek, Dhak, Pa, Ma, Pa, Ma, Neek, Dhak, Pa, Ma, Gak, Ma, Gak, Dhak, Pa, Ma, Gak, Re, Gak, Re, Pa, Ma, Gak, Re, Sa, Re, Sa, Ma, Gak, Re, Sa, Neekl, Sa, Neekl, Gak, Re}";
+        String expectedArroh = "{Sa, Re, Gak, Re, Gak, Neelk, Sa, Re, Gak, Ma, Gak, Ma, Sa, Re, Gak, Ma, Pa, Ma, Pa, Re, Gak, Ma, Pa, Dhak, Pa, Dhak, Gak, Ma, Pa, Dhak, Neek, Dhak, Neek, Ma, Pa, Dhak, Neek, Saa, Neek, Saa, Pa, Dhak, Neek, Saa, Reh, Saa, Reh, Dhak, Neek, Saa, Reh, Gahk, Reh, Gahk, Neek, Saa, Reh, Gahk, Mah, Gahk, Mah, Saa, Reh, Gahk, Mah, Pah, Mah, Pah, Reh, Gahk, Mah, Pah, Dhahk, Pah, Dhahk, Gahk, Mah, Pah, Dhahk, Neehk, Dhahk, Neehk, Mah, Pah, Dhahk, Neehk, Sahh, Neehk, Sahh, Pah, Dhahk, Neehk, Sahh, Rehh, Sahh, Rehh, Dhahk, Neehk}";
+        String expectedAvroh = "{Sahh, Neehk, Dhahk, Neehk, Dhahk, Rehh, Sahh, Neehk, Dhahk, Pah, Dhahk, Pah, Sahh, Neehk, Dhahk, Pah, Mah, Pah, Mah, Neehk, Dhahk, Pah, Mah, Gahk, Mah, Gahk, Dhahk, Pah, Mah, Gahk, Reh, Gahk, Reh, Pah, Mah, Gahk, Reh, Saa, Reh, Saa, Mah, Gahk, Reh, Saa, Neek, Saa, Neek, Gahk, Reh, Saa, Neek, Dhak, Neek, Dhak, Reh, Saa, Neek, Dhak, Pa, Dhak, Pa, Saa, Neek, Dhak, Pa, Ma, Pa, Ma, Neek, Dhak, Pa, Ma, Gak, Ma, Gak, Dhak, Pa, Ma, Gak, Re, Gak, Re, Pa, Ma, Gak, Re, Sa, Re, Sa, Ma, Gak, Re, Sa, Neelk, Sa, Neelk, Gak, Re}";
 
 
         ResponseEntity<List<List<Integer>>> listResponseEntity =
@@ -491,8 +490,8 @@ class C_Minor_SwaranjaliControllerTest {
     //@Disabled
     public void palyCMajorAlk_12_One_Octave() throws Exception {
 
-        String expectedArroh = "{Gak, Re, Gak, Sa, Re, Gak, Neekl, Sa, Ma, Gak, Ma, Re, Gak, Ma, Sa, Re, Pa, Ma, Pa, Gak, Ma, Pa, Re, Gak, Dhak, Pa, Dhak, Ma, Pa, Dhak, Gak, Ma, Neek, Dhak, Neek, Pa, Dhak, Neek, Ma, Pa, Saa, Neek, Saa, Dhak, Neek, Saa, Pa, Dhak, Reh, Saa, Reh, Neek, Saa, Reh, Dhak, Neek, Gahk, Reh, Gahk, Saa, Reh, Gahk, Neek, Saa}";
-        String expectedAvroh = "{Dhak, Neek, Dhak, Saa, Neek, Dhak, Reh, Saa, Pa, Dhak, Pa, Neek, Dhak, Pa, Saa, Neek, Ma, Pa, Ma, Dhak, Pa, Ma, Neek, Dhak, Gak, Ma, Gak, Pa, Ma, Gak, Dhak, Pa, Re, Gak, Re, Ma, Gak, Re, Pa, Ma, Sa, Re, Sa, Gak, Re, Sa, Ma, Gak, Neekl, Sa, Neekl, Re, Sa, Neekl, Gak, Re, Dhakl, Neekl, Dhakl, Sa, Neekl, Dhakl, Re, Sa}";
+        String expectedArroh = "{Gak, Re, Gak, Sa, Re, Gak, Neelk, Sa, Ma, Gak, Ma, Re, Gak, Ma, Sa, Re, Pa, Ma, Pa, Gak, Ma, Pa, Re, Gak, Dhak, Pa, Dhak, Ma, Pa, Dhak, Gak, Ma, Neek, Dhak, Neek, Pa, Dhak, Neek, Ma, Pa, Saa, Neek, Saa, Dhak, Neek, Saa, Pa, Dhak, Reh, Saa, Reh, Neek, Saa, Reh, Dhak, Neek, Gahk, Reh, Gahk, Saa, Reh, Gahk, Neek, Saa}";
+        String expectedAvroh = "{Dhak, Neek, Dhak, Saa, Neek, Dhak, Reh, Saa, Pa, Dhak, Pa, Neek, Dhak, Pa, Saa, Neek, Ma, Pa, Ma, Dhak, Pa, Ma, Neek, Dhak, Gak, Ma, Gak, Pa, Ma, Gak, Dhak, Pa, Re, Gak, Re, Ma, Gak, Re, Pa, Ma, Sa, Re, Sa, Gak, Re, Sa, Ma, Gak, Neelk, Sa, Neelk, Re, Sa, Neelk, Gak, Re, Dhalk, Neelk, Dhalk, Sa, Neelk, Dhalk, Re, Sa}";
 
         ResponseEntity<List<List<Integer>>> listResponseEntity =
                 swaranjaliController.playAlankar("C", "MINOR_SCALE", 1, 3, List.of("ALK_12"),
@@ -508,8 +507,8 @@ class C_Minor_SwaranjaliControllerTest {
     //@Disabled
     public void palyCMajorAlk_12_Two_Octave() throws Exception {
 
-        String expectedArroh = "{Gak, Re, Gak, Sa, Re, Gak, Neekl, Sa, Ma, Gak, Ma, Re, Gak, Ma, Sa, Re, Pa, Ma, Pa, Gak, Ma, Pa, Re, Gak, Dhak, Pa, Dhak, Ma, Pa, Dhak, Gak, Ma, Neek, Dhak, Neek, Pa, Dhak, Neek, Ma, Pa, Saa, Neek, Saa, Dhak, Neek, Saa, Pa, Dhak, Reh, Saa, Reh, Neek, Saa, Reh, Dhak, Neek, Gahk, Reh, Gahk, Saa, Reh, Gahk, Neek, Saa, Mah, Gahk, Mah, Reh, Gahk, Mah, Saa, Reh, Pah, Mah, Pah, Gahk, Mah, Pah, Reh, Gahk, Dhahk, Pah, Dhahk, Mah, Pah, Dhahk, Gahk, Mah, Neehk, Dhahk, Neehk, Pah, Dhahk, Neehk, Mah, Pah, Sahh, Neehk, Sahh, Dhahk, Neehk, Sahh, Pah, Dhahk, NOT_FOUND, Sahh, NOT_FOUND, Neehk, Sahh, NOT_FOUND, Dhahk, Neehk, NOT_FOUND, NOT_FOUND, NOT_FOUND, Sahh, NOT_FOUND, NOT_FOUND, Neehk, Sahh}";
-        String expectedAvroh = "{Dhahk, Neehk, Dhahk, Sahh, Neehk, Dhahk, NOT_FOUND, Sahh, Pah, Dhahk, Pah, Neehk, Dhahk, Pah, Sahh, Neehk, Mah, Pah, Mah, Dhahk, Pah, Mah, Neehk, Dhahk, Gahk, Mah, Gahk, Pah, Mah, Gahk, Dhahk, Pah, Reh, Gahk, Reh, Mah, Gahk, Reh, Pah, Mah, Saa, Reh, Saa, Gahk, Reh, Saa, Mah, Gahk, Neek, Saa, Neek, Reh, Saa, Neek, Gahk, Reh, Dhak, Neek, Dhak, Saa, Neek, Dhak, Reh, Saa, Pa, Dhak, Pa, Neek, Dhak, Pa, Saa, Neek, Ma, Pa, Ma, Dhak, Pa, Ma, Neek, Dhak, Gak, Ma, Gak, Pa, Ma, Gak, Dhak, Pa, Re, Gak, Re, Ma, Gak, Re, Pa, Ma, Sa, Re, Sa, Gak, Re, Sa, Ma, Gak, Neekl, Sa, Neekl, Re, Sa, Neekl, Gak, Re, Dhakl, Neekl, Dhakl, Sa, Neekl, Dhakl, Re, Sa}";
+        String expectedArroh = "{Gak, Re, Gak, Sa, Re, Gak, Neelk, Sa, Ma, Gak, Ma, Re, Gak, Ma, Sa, Re, Pa, Ma, Pa, Gak, Ma, Pa, Re, Gak, Dhak, Pa, Dhak, Ma, Pa, Dhak, Gak, Ma, Neek, Dhak, Neek, Pa, Dhak, Neek, Ma, Pa, Saa, Neek, Saa, Dhak, Neek, Saa, Pa, Dhak, Reh, Saa, Reh, Neek, Saa, Reh, Dhak, Neek, Gahk, Reh, Gahk, Saa, Reh, Gahk, Neek, Saa, Mah, Gahk, Mah, Reh, Gahk, Mah, Saa, Reh, Pah, Mah, Pah, Gahk, Mah, Pah, Reh, Gahk, Dhahk, Pah, Dhahk, Mah, Pah, Dhahk, Gahk, Mah, Neehk, Dhahk, Neehk, Pah, Dhahk, Neehk, Mah, Pah, Sahh, Neehk, Sahh, Dhahk, Neehk, Sahh, Pah, Dhahk, Rehh, Sahh, Rehh, Neehk, Sahh, Rehh, Dhahk, Neehk, Gahhk, Rehh, Gahhk, Sahh, Rehh, Gahhk, Neehk, Sahh}";
+        String expectedAvroh = "{Dhahk, Neehk, Dhahk, Sahh, Neehk, Dhahk, Rehh, Sahh, Pah, Dhahk, Pah, Neehk, Dhahk, Pah, Sahh, Neehk, Mah, Pah, Mah, Dhahk, Pah, Mah, Neehk, Dhahk, Gahk, Mah, Gahk, Pah, Mah, Gahk, Dhahk, Pah, Reh, Gahk, Reh, Mah, Gahk, Reh, Pah, Mah, Saa, Reh, Saa, Gahk, Reh, Saa, Mah, Gahk, Neek, Saa, Neek, Reh, Saa, Neek, Gahk, Reh, Dhak, Neek, Dhak, Saa, Neek, Dhak, Reh, Saa, Pa, Dhak, Pa, Neek, Dhak, Pa, Saa, Neek, Ma, Pa, Ma, Dhak, Pa, Ma, Neek, Dhak, Gak, Ma, Gak, Pa, Ma, Gak, Dhak, Pa, Re, Gak, Re, Ma, Gak, Re, Pa, Ma, Sa, Re, Sa, Gak, Re, Sa, Ma, Gak, Neelk, Sa, Neelk, Re, Sa, Neelk, Gak, Re, Dhalk, Neelk, Dhalk, Sa, Neelk, Dhalk, Re, Sa}";
 
 
         ResponseEntity<List<List<Integer>>> listResponseEntity =
@@ -530,7 +529,7 @@ class C_Minor_SwaranjaliControllerTest {
     public void palyCMajorAlk_13_One_Octave() throws Exception {
 
         String expectedArroh = "{Sa, Re, Gak, Re, Sa, Gak, Re, Sa, Gak, Re, Re, Gak, Ma, Gak, Re, Ma, Gak, Re, Ma, Gak, Gak, Ma, Pa, Ma, Gak, Pa, Ma, Gak, Pa, Ma, Ma, Pa, Dhak, Pa, Ma, Dhak, Pa, Ma, Dhak, Pa, Pa, Dhak, Neek, Dhak, Pa, Neek, Dhak, Pa, Neek, Dhak, Dhak, Neek, Saa, Neek, Dhak, Saa, Neek, Dhak, Saa, Neek, Neek, Saa, Reh, Saa, Neek, Reh, Saa, Neek, Reh, Saa, Saa, Reh, Gahk, Reh, Saa, Gahk, Reh, Saa, Gahk, Reh}";
-        String expectedAvroh = "{Saa, Neek, Dhak, Neek, Saa, Dhak, Neek, Saa, Dhak, Neek, Neek, Dhak, Pa, Dhak, Neek, Pa, Dhak, Neek, Pa, Dhak, Dhak, Pa, Ma, Pa, Dhak, Ma, Pa, Dhak, Ma, Pa, Pa, Ma, Gak, Ma, Pa, Gak, Ma, Pa, Gak, Ma, Ma, Gak, Re, Gak, Ma, Re, Gak, Ma, Re, Gak, Gak, Re, Sa, Re, Gak, Sa, Re, Gak, Sa, Re, Re, Sa, Neekl, Sa, Re, Neekl, Sa, Re, Neekl, Sa, Sa, Neekl, Dhakl, Neekl, Sa, Dhakl, Neekl, Sa, Dhakl, Neekl}";
+        String expectedAvroh = "{Saa, Neek, Dhak, Neek, Saa, Dhak, Neek, Saa, Dhak, Neek, Neek, Dhak, Pa, Dhak, Neek, Pa, Dhak, Neek, Pa, Dhak, Dhak, Pa, Ma, Pa, Dhak, Ma, Pa, Dhak, Ma, Pa, Pa, Ma, Gak, Ma, Pa, Gak, Ma, Pa, Gak, Ma, Ma, Gak, Re, Gak, Ma, Re, Gak, Ma, Re, Gak, Gak, Re, Sa, Re, Gak, Sa, Re, Gak, Sa, Re, Re, Sa, Neelk, Sa, Re, Neelk, Sa, Re, Neelk, Sa, Sa, Neelk, Dhalk, Neelk, Sa, Dhalk, Neelk, Sa, Dhalk, Neelk}";
 
         ResponseEntity<List<List<Integer>>> listResponseEntity =
                 swaranjaliController.playAlankar("C", "MINOR_SCALE", 1, 3, List.of("ALK_13"),
@@ -546,7 +545,7 @@ class C_Minor_SwaranjaliControllerTest {
     ////@Disabled
     public void palyCMajorAlk_13_Two_Octave() throws Exception {
 
-        String expectedArroh = "{Sa, Re, Gak, Re, Sa, Gak, Re, Sa, Gak, Re, Re, Gak, Ma, Gak, Re, Ma, Gak, Re, Ma, Gak, Gak, Ma, Pa, Ma, Gak, Pa, Ma, Gak, Pa, Ma, Ma, Pa, Dhak, Pa, Ma, Dhak, Pa, Ma, Dhak, Pa, Pa, Dhak, Neek, Dhak, Pa, Neek, Dhak, Pa, Neek, Dhak, Dhak, Neek, Saa, Neek, Dhak, Saa, Neek, Dhak, Saa, Neek, Neek, Saa, Reh, Saa, Neek, Reh, Saa, Neek, Reh, Saa, Saa, Reh, Gahk, Reh, Saa, Gahk, Reh, Saa, Gahk, Reh, Reh, Gahk, Mah, Gahk, Reh, Mah, Gahk, Reh, Mah, Gahk, Gahk, Mah, Pah, Mah, Gahk, Pah, Mah, Gahk, Pah, Mah, Mah, Pah, Dhahk, Pah, Mah, Dhahk, Pah, Mah, Dhahk, Pah, Pah, Dhahk, Neehk, Dhahk, Pah, Neehk, Dhahk, Pah, Neehk, Dhahk, Dhahk, Neehk, Sahh, Neehk, Dhahk, Sahh, Neehk, Dhahk, Sahh, Neehk, Neehk, Sahh, NOT_FOUND, Sahh, Neehk, NOT_FOUND, Sahh, Neehk, NOT_FOUND, Sahh, Sahh, NOT_FOUND, NOT_FOUND, NOT_FOUND, Sahh, NOT_FOUND, NOT_FOUND, Sahh, NOT_FOUND, NOT_FOUND}";
+        String expectedArroh = "{Sa, Re, Gak, Re, Sa, Gak, Re, Sa, Gak, Re, Re, Gak, Ma, Gak, Re, Ma, Gak, Re, Ma, Gak, Gak, Ma, Pa, Ma, Gak, Pa, Ma, Gak, Pa, Ma, Ma, Pa, Dhak, Pa, Ma, Dhak, Pa, Ma, Dhak, Pa, Pa, Dhak, Neek, Dhak, Pa, Neek, Dhak, Pa, Neek, Dhak, Dhak, Neek, Saa, Neek, Dhak, Saa, Neek, Dhak, Saa, Neek, Neek, Saa, Reh, Saa, Neek, Reh, Saa, Neek, Reh, Saa, Saa, Reh, Gahk, Reh, Saa, Gahk, Reh, Saa, Gahk, Reh, Reh, Gahk, Mah, Gahk, Reh, Mah, Gahk, Reh, Mah, Gahk, Gahk, Mah, Pah, Mah, Gahk, Pah, Mah, Gahk, Pah, Mah, Mah, Pah, Dhahk, Pah, Mah, Dhahk, Pah, Mah, Dhahk, Pah, Pah, Dhahk, Neehk, Dhahk, Pah, Neehk, Dhahk, Pah, Neehk, Dhahk, Dhahk, Neehk, Sahh, Neehk, Dhahk, Sahh, Neehk, Dhahk, Sahh, Neehk, Neehk, Sahh, Rehh, Sahh, Neehk, Rehh, Sahh, Neehk, Rehh, Sahh, Sahh, Rehh, Gahhk, Rehh, Sahh, Gahhk, Rehh, Sahh, Gahhk, Rehh}";
         String expectedAvroh = "{Sahh, Neehk, Dhahk, Neehk, Sahh, Dhahk, Neehk, Sahh, Dhahk, Neehk, Neehk, Dhahk, Pah, Dhahk, Neehk, Pah, Dhahk, Neehk, Pah, Dhahk, Dhahk, Pah, Mah, Pah, Dhahk, Mah, Pah, Dhahk, Mah, Pah, Pah, Mah, Gahk, Mah, Pah, Gahk, Mah, Pah, Gahk, Mah, Mah, Gahk, Reh, Gahk, Mah, Reh, Gahk, Mah, Reh, Gahk, Gahk, Reh, Saa, Reh, Gahk, Saa, Reh, Gahk, Saa, Reh, Reh, Saa, Neek, Saa, Reh, Neek, Saa, Reh, Neek, Saa, Saa, Neek, Dhak, Neek, Saa, Dhak, Neek, Saa, Dhak, Neek, Neek, Dhak, Pa, Dhak, Neek, Pa, Dhak, Neek, Pa, Dhak, Dhak, Pa, Ma, Pa, Dhak, Ma, Pa, Dhak, Ma, Pa, Pa, Ma, Gak, Ma, Pa, Gak, Ma, Pa, Gak, Ma, Ma, Gak, Re, Gak, Ma, Re, Gak, Ma, Re, Gak, Gak, Re, Sa, Re, Gak, Sa, Re, Gak, Sa, Re, Re, Sa, Neelk, Sa, Re, Neelk, Sa, Re, Neelk, Sa, Sa, Neelk, Dhalk, Neelk, Sa, Dhalk, Neelk, Sa, Dhalk, Neelk}";
 
 

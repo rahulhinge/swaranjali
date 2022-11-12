@@ -44,4 +44,9 @@ public class Notes {
     public static final String NEEh = "Neeh";  // 23
     public static final String SAhh = "Sahh";  // 24
 
+    public static final String REhhk = "Rehhk";  // 25
+    public static final String REhh = "Rehh";  // 26
+    public static final String GAhhk = "Gahhk";  // 27
+    public static final String GAhh = "Gahh";  // 28
+
 }
