@@ -297,6 +297,56 @@ public interface Alankars {
                                     RE,SA,NEEl,SA,RE,      NEEl,SA,RE,NEEl,SA,   SA,NEEl,DHAl,NEEl,SA, DHAl,NEEl,SA,DHAl,NEEl
                             )
                     )
+            ),
+            Map.entry(
+                    "ALK_14",
+                    List.of(
+                            List.of(
+                                    SA,RE,GA,RE,             RE,GA,SA,RE,            SA,GA,GA,RE,           RE,RE,NEEl,SA,
+                                    RE,GA,MA,GA,             GA,MA,RE,GA,            RE,MA,MA,GA,           GA,GA,SA,RE,
+                                    GA,MA,PA,MA,             MA,PA,GA,MA,            GA,PA,PA,MA,           MA,MA,RE,GA,
+                                    MA,PA,DHA,PA,            PA,DHA,MA,PA,           MA,DHA,DHA,PA,         PA,PA,GA,MA,
+                                    PA,DHA,NEE,DHA,          DHA,NEE,PA,DHA,         PA,NEE,NEE,DHA,        DHA,DHA,MA,PA,
+                                    DHA,NEE,SAh,NEE,         NEE,SAh,DHA,NEE,        DHA,SAh,SAh,NEE,       NEE,NEE,PA,DHA,
+                                    NEE,SAh,REh,SAh,         SAh,REh,NEE,SAh,        NEE,REh,REh,SAh,       SAh,SAh,DHA,NEE,
+                                    SAh,REh,GAh,REh,         REh,GAh,SAh,REh,        SAh,GAh,GAh,REh,       REh,REh,NEE,SAh
+                            ),
+                            List.of(
+                                    SAh,NEE,DHA,NEE,                   NEE,DHA,SAh,NEE,                  SAh,DHA,DHA,NEE,             NEE,NEE,REh,SAh,
+                                    NEE,DHA,PA,DHA,                    DHA,PA,NEE,DHA,                   NEE,PA,PA,DHA,               DHA,DHA,SAh,NEE,
+                                    DHA,PA,MA,PA,                      PA,MA,DHA,PA,                     DHA,MA,MA,PA,                PA,PA,NEE,DHA,
+                                    PA,MA,GA,MA,                       MA,GA,PA,MA,                      PA,GA,GA,MA,                 MA,MA,DHA,PA,
+                                    MA,GA,RE,GA,                       GA,RE,MA,GA,                      MA,RE,RE,GA,                 GA,GA,PA,MA,
+                                    GA,RE,SA,RE,                       RE,SA,GA,RE,                      GA,SA,SA,RE,                 RE,RE,MA,GA,
+                                    RE,SA,NEEl,SA,                     SA,NEEl,RE,SA,                    RE,NEEl,NEEl,SA,             SA,SA,GA,RE,
+                                    SA,NEEl,DHAl,NEEl,                 NEEl,DHAl,SA,NEEl,                SA,DHAl,DHAl,NEEl,           NEEl,NEEl,RE,SA
+                            )
+                    )
+            ),
+            Map.entry(
+                    "ALK_15",
+                    List.of(
+                            List.of(
+                                    SA,RE,GA,RE,        RE,GA,SA,RE,        SA,GA,GA,RE,      NEEl,NEEl,SA,RE,
+                                    RE,GA,MA,GA,        GA,MA,RE,GA,        RE,MA,MA,GA,      SA,SA,RE,GA,
+                                    GA,MA,PA,MA,        MA,PA,GA,MA,        GA,PA,PA,MA,      RE,RE,GA,MA,
+                                    MA,PA,DHA,PA,       PA,DHA,MA,PA,       MA,DHA,DHA,PA,    GA,GA,MA,PA,
+                                    PA,DHA,NEE,DHA,     DHA,NEE,PA,DHA,     PA,NEE,NEE,DHA,   MA,MA,PA,DHA,
+                                    DHA,NEE,SAh,NEE,    NEE,SAh,DHA,NEE,    DHA,SAh,SAh,NEE,  PA,PA,DHA,NEE,
+                                    NEE,SAh,REh,SAh,    SAh,REh,NEE,SAh,    NEE,REh,REh,SAh,  DHA,DHA,NEE,SAh,
+                                    SAh,REh,GAh,REh,    REh,GAh,SAh,REh,    SAh,GAh,GAh,REh,  NEE,NEE,SAh,REh
+                            ),
+                            List.of(
+                                    SAh,NEE,DHA,NEE,    NEE,DHA,SAh,NEE,   SAh,DHA,DHA,NEE,   REh,REh,SAh,NEE,
+                                    NEE,DHA,PA,DHA,     DHA,PA,NEE,DHA,    NEE,PA,PA,DHA,     SAh,SAh,NEE,DHA,
+                                    DHA,PA,MA,PA,       PA,MA,DHA,PA,      DHA,MA,MA,PA,      NEE,NEE,DHA,PA,
+                                    PA,MA,GA,MA,        MA,GA,PA,MA,       PA,GA,GA,MA,       DHA,DHA,PA,MA,
+                                    MA,GA,RE,GA,        GA,RE,MA,GA,       MA,RE,RE,GA,       PA,PA,MA,GA,
+                                    GA,RE,SA,RE,        RE,SA,GA,RE,       GA,SA,SA,RE,       MA,MA,GA,RE,
+                                    RE,SA,NEEl,SA,      SA,NEEl,RE,SA,     RE,NEEl,NEEl,SA,   GA,GA,RE,SA,
+                                    SA,NEEl,DHAl,NEEl,  NEEl,DHAl,SA,NEEl,  SA,DHAl,DHAl,NEEl, RE,RE,SA,NEEl
+                            )
+                    )
             )
 
 

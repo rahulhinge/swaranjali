@@ -557,6 +557,82 @@ class C_Major_SwaranjaliControllerTest {
     }
 
 
+    ///////////////   ALK-14   //////////////
+
+    @Test
+    ////@Disabled
+    public void palyCMajorAlk_14_One_Octave() throws Exception {
+
+        String expectedArroh = "{Sa, Re, Ga, Re, Re, Ga, Sa, Re, Sa, Ga, Ga, Re, Re, Re, Neel, Sa, Re, Ga, Ma, Ga, Ga, Ma, Re, Ga, Re, Ma, Ma, Ga, Ga, Ga, Sa, Re, Ga, Ma, Pa, Ma, Ma, Pa, Ga, Ma, Ga, Pa, Pa, Ma, Ma, Ma, Re, Ga, Ma, Pa, Dha, Pa, Pa, Dha, Ma, Pa, Ma, Dha, Dha, Pa, Pa, Pa, Ga, Ma, Pa, Dha, Nee, Dha, Dha, Nee, Pa, Dha, Pa, Nee, Nee, Dha, Dha, Dha, Ma, Pa, Dha, Nee, Saa, Nee, Nee, Saa, Dha, Nee, Dha, Saa, Saa, Nee, Nee, Nee, Pa, Dha, Nee, Saa, Reh, Saa, Saa, Reh, Nee, Saa, Nee, Reh, Reh, Saa, Saa, Saa, Dha, Nee, Saa, Reh, Gah, Reh, Reh, Gah, Saa, Reh, Saa, Gah, Gah, Reh, Reh, Reh, Nee, Saa}";
+        String expectedAvroh = "{Saa, Nee, Dha, Nee, Nee, Dha, Saa, Nee, Saa, Dha, Dha, Nee, Nee, Nee, Reh, Saa, Nee, Dha, Pa, Dha, Dha, Pa, Nee, Dha, Nee, Pa, Pa, Dha, Dha, Dha, Saa, Nee, Dha, Pa, Ma, Pa, Pa, Ma, Dha, Pa, Dha, Ma, Ma, Pa, Pa, Pa, Nee, Dha, Pa, Ma, Ga, Ma, Ma, Ga, Pa, Ma, Pa, Ga, Ga, Ma, Ma, Ma, Dha, Pa, Ma, Ga, Re, Ga, Ga, Re, Ma, Ga, Ma, Re, Re, Ga, Ga, Ga, Pa, Ma, Ga, Re, Sa, Re, Re, Sa, Ga, Re, Ga, Sa, Sa, Re, Re, Re, Ma, Ga, Re, Sa, Neel, Sa, Sa, Neel, Re, Sa, Re, Neel, Neel, Sa, Sa, Sa, Ga, Re, Sa, Neel, Dhal, Neel, Neel, Dhal, Sa, Neel, Sa, Dhal, Dhal, Neel, Neel, Neel, Re, Sa}";
+
+        ResponseEntity<List<List<Integer>>> listResponseEntity =
+                swaranjaliController.playAlankar("C", "MAJOR_SCALE", 1, 3, List.of("ALK_14"),
+                        120, "AC_GUITAR", false);
+        List<List<Integer>> aarovAndAvrov = listResponseEntity.getBody();
+        String actualAarov = Utils.printNotes(aarovAndAvrov.get(0), 48);
+        String actualAvrov = Utils.printNotes(aarovAndAvrov.get(1), 48);
+        assertThat(actualAarov).isEqualTo(expectedArroh);
+        assertThat(actualAvrov).isEqualTo(expectedAvroh);
+    }
+
+    @Test
+    ////@Disabled
+    public void palyCMajorAlk_14_Two_Octave() throws Exception {
+
+        String expectedArroh = "{Sa, Re, Ga, Re, Re, Ga, Sa, Re, Sa, Ga, Ga, Re, Re, Re, Neel, Sa, Re, Ga, Ma, Ga, Ga, Ma, Re, Ga, Re, Ma, Ma, Ga, Ga, Ga, Sa, Re, Ga, Ma, Pa, Ma, Ma, Pa, Ga, Ma, Ga, Pa, Pa, Ma, Ma, Ma, Re, Ga, Ma, Pa, Dha, Pa, Pa, Dha, Ma, Pa, Ma, Dha, Dha, Pa, Pa, Pa, Ga, Ma, Pa, Dha, Nee, Dha, Dha, Nee, Pa, Dha, Pa, Nee, Nee, Dha, Dha, Dha, Ma, Pa, Dha, Nee, Saa, Nee, Nee, Saa, Dha, Nee, Dha, Saa, Saa, Nee, Nee, Nee, Pa, Dha, Nee, Saa, Reh, Saa, Saa, Reh, Nee, Saa, Nee, Reh, Reh, Saa, Saa, Saa, Dha, Nee, Saa, Reh, Gah, Reh, Reh, Gah, Saa, Reh, Saa, Gah, Gah, Reh, Reh, Reh, Nee, Saa, Reh, Gah, Mah, Gah, Gah, Mah, Reh, Gah, Reh, Mah, Mah, Gah, Gah, Gah, Saa, Reh, Gah, Mah, Pah, Mah, Mah, Pah, Gah, Mah, Gah, Pah, Pah, Mah, Mah, Mah, Reh, Gah, Mah, Pah, Dhah, Pah, Pah, Dhah, Mah, Pah, Mah, Dhah, Dhah, Pah, Pah, Pah, Gah, Mah, Pah, Dhah, Neeh, Dhah, Dhah, Neeh, Pah, Dhah, Pah, Neeh, Neeh, Dhah, Dhah, Dhah, Mah, Pah, Dhah, Neeh, Sahh, Neeh, Neeh, Sahh, Dhah, Neeh, Dhah, Sahh, Sahh, Neeh, Neeh, Neeh, Pah, Dhah, Neeh, Sahh, Rehh, Sahh, Sahh, Rehh, Neeh, Sahh, Neeh, Rehh, Rehh, Sahh, Sahh, Sahh, Dhah, Neeh}";
+        String expectedAvroh = "{Sahh, Neeh, Dhah, Neeh, Neeh, Dhah, Sahh, Neeh, Sahh, Dhah, Dhah, Neeh, Neeh, Neeh, Rehh, Sahh, Neeh, Dhah, Pah, Dhah, Dhah, Pah, Neeh, Dhah, Neeh, Pah, Pah, Dhah, Dhah, Dhah, Sahh, Neeh, Dhah, Pah, Mah, Pah, Pah, Mah, Dhah, Pah, Dhah, Mah, Mah, Pah, Pah, Pah, Neeh, Dhah, Pah, Mah, Gah, Mah, Mah, Gah, Pah, Mah, Pah, Gah, Gah, Mah, Mah, Mah, Dhah, Pah, Mah, Gah, Reh, Gah, Gah, Reh, Mah, Gah, Mah, Reh, Reh, Gah, Gah, Gah, Pah, Mah, Gah, Reh, Saa, Reh, Reh, Saa, Gah, Reh, Gah, Saa, Saa, Reh, Reh, Reh, Mah, Gah, Reh, Saa, Nee, Saa, Saa, Nee, Reh, Saa, Reh, Nee, Nee, Saa, Saa, Saa, Gah, Reh, Saa, Nee, Dha, Nee, Nee, Dha, Saa, Nee, Saa, Dha, Dha, Nee, Nee, Nee, Reh, Saa, Nee, Dha, Pa, Dha, Dha, Pa, Nee, Dha, Nee, Pa, Pa, Dha, Dha, Dha, Saa, Nee, Dha, Pa, Ma, Pa, Pa, Ma, Dha, Pa, Dha, Ma, Ma, Pa, Pa, Pa, Nee, Dha, Pa, Ma, Ga, Ma, Ma, Ga, Pa, Ma, Pa, Ga, Ga, Ma, Ma, Ma, Dha, Pa, Ma, Ga, Re, Ga, Ga, Re, Ma, Ga, Ma, Re, Re, Ga, Ga, Ga, Pa, Ma, Ga, Re, Sa, Re, Re, Sa, Ga, Re, Ga, Sa, Sa, Re, Re, Re, Ma, Ga, Re, Sa, Neel, Sa, Sa, Neel, Re, Sa, Re, Neel, Neel, Sa, Sa, Sa, Ga, Re}";
+
+
+        ResponseEntity<List<List<Integer>>> listResponseEntity =
+                swaranjaliController.playAlankar("C", "MAJOR_SCALE", 2, 3, List.of("ALK_14"),
+                        120, "AC_GUITAR", false);
+        List<List<Integer>> aarovAndAvrov = listResponseEntity.getBody();
+        String actualAarov = Utils.printNotes(aarovAndAvrov.get(0), 48);
+        String actualAvrov = Utils.printNotes(aarovAndAvrov.get(1), 48);
+        assertThat(actualAarov).isEqualTo(expectedArroh);
+        assertThat(actualAvrov).isEqualTo(expectedAvroh);
+    }
+
+
+    ///////////////   ALK-15   //////////////
+
+    @Test
+    ////@Disabled
+    public void palyCMajorAlk_15_One_Octave() throws Exception {
+
+        String expectedArroh = "{Sa, Re, Ga, Re, Re, Ga, Sa, Re, Sa, Ga, Ga, Re, Neel, Neel, Sa, Re, Re, Ga, Ma, Ga, Ga, Ma, Re, Ga, Re, Ma, Ma, Ga, Sa, Sa, Re, Ga, Ga, Ma, Pa, Ma, Ma, Pa, Ga, Ma, Ga, Pa, Pa, Ma, Re, Re, Ga, Ma, Ma, Pa, Dha, Pa, Pa, Dha, Ma, Pa, Ma, Dha, Dha, Pa, Ga, Ga, Ma, Pa, Pa, Dha, Nee, Dha, Dha, Nee, Pa, Dha, Pa, Nee, Nee, Dha, Ma, Ma, Pa, Dha, Dha, Nee, Saa, Nee, Nee, Saa, Dha, Nee, Dha, Saa, Saa, Nee, Pa, Pa, Dha, Nee, Nee, Saa, Reh, Saa, Saa, Reh, Nee, Saa, Nee, Reh, Reh, Saa, Dha, Dha, Nee, Saa, Saa, Reh, Gah, Reh, Reh, Gah, Saa, Reh, Saa, Gah, Gah, Reh, Nee, Nee, Saa, Reh}";
+        String expectedAvroh = "{Saa, Nee, Dha, Nee, Nee, Dha, Saa, Nee, Saa, Dha, Dha, Nee, Reh, Reh, Saa, Nee, Nee, Dha, Pa, Dha, Dha, Pa, Nee, Dha, Nee, Pa, Pa, Dha, Saa, Saa, Nee, Dha, Dha, Pa, Ma, Pa, Pa, Ma, Dha, Pa, Dha, Ma, Ma, Pa, Nee, Nee, Dha, Pa, Pa, Ma, Ga, Ma, Ma, Ga, Pa, Ma, Pa, Ga, Ga, Ma, Dha, Dha, Pa, Ma, Ma, Ga, Re, Ga, Ga, Re, Ma, Ga, Ma, Re, Re, Ga, Pa, Pa, Ma, Ga, Ga, Re, Sa, Re, Re, Sa, Ga, Re, Ga, Sa, Sa, Re, Ma, Ma, Ga, Re, Re, Sa, Neel, Sa, Sa, Neel, Re, Sa, Re, Neel, Neel, Sa, Ga, Ga, Re, Sa, Sa, Neel, Dhal, Neel, Neel, Dhal, Sa, Neel, Sa, Dhal, Dhal, Neel, Re, Re, Sa, Neel}";
+
+        ResponseEntity<List<List<Integer>>> listResponseEntity =
+                swaranjaliController.playAlankar("C", "MAJOR_SCALE", 1, 3, List.of("ALK_15"),
+                        120, "AC_GUITAR", false);
+        List<List<Integer>> aarovAndAvrov = listResponseEntity.getBody();
+        String actualAarov = Utils.printNotes(aarovAndAvrov.get(0), 48);
+        String actualAvrov = Utils.printNotes(aarovAndAvrov.get(1), 48);
+        assertThat(actualAarov).isEqualTo(expectedArroh);
+        assertThat(actualAvrov).isEqualTo(expectedAvroh);
+    }
+
+    @Test
+    ////@Disabled
+    public void palyCMajorAlk_15_Two_Octave() throws Exception {
+
+        String expectedArroh = "{Sa, Re, Ga, Re, Re, Ga, Sa, Re, Sa, Ga, Ga, Re, Neel, Neel, Sa, Re, Re, Ga, Ma, Ga, Ga, Ma, Re, Ga, Re, Ma, Ma, Ga, Sa, Sa, Re, Ga, Ga, Ma, Pa, Ma, Ma, Pa, Ga, Ma, Ga, Pa, Pa, Ma, Re, Re, Ga, Ma, Ma, Pa, Dha, Pa, Pa, Dha, Ma, Pa, Ma, Dha, Dha, Pa, Ga, Ga, Ma, Pa, Pa, Dha, Nee, Dha, Dha, Nee, Pa, Dha, Pa, Nee, Nee, Dha, Ma, Ma, Pa, Dha, Dha, Nee, Saa, Nee, Nee, Saa, Dha, Nee, Dha, Saa, Saa, Nee, Pa, Pa, Dha, Nee, Nee, Saa, Reh, Saa, Saa, Reh, Nee, Saa, Nee, Reh, Reh, Saa, Dha, Dha, Nee, Saa, Saa, Reh, Gah, Reh, Reh, Gah, Saa, Reh, Saa, Gah, Gah, Reh, Nee, Nee, Saa, Reh, Reh, Gah, Mah, Gah, Gah, Mah, Reh, Gah, Reh, Mah, Mah, Gah, Saa, Saa, Reh, Gah, Gah, Mah, Pah, Mah, Mah, Pah, Gah, Mah, Gah, Pah, Pah, Mah, Reh, Reh, Gah, Mah, Mah, Pah, Dhah, Pah, Pah, Dhah, Mah, Pah, Mah, Dhah, Dhah, Pah, Gah, Gah, Mah, Pah, Pah, Dhah, Neeh, Dhah, Dhah, Neeh, Pah, Dhah, Pah, Neeh, Neeh, Dhah, Mah, Mah, Pah, Dhah, Dhah, Neeh, Sahh, Neeh, Neeh, Sahh, Dhah, Neeh, Dhah, Sahh, Sahh, Neeh, Pah, Pah, Dhah, Neeh, Neeh, Sahh, Rehh, Sahh, Sahh, Rehh, Neeh, Sahh, Neeh, Rehh, Rehh, Sahh, Dhah, Dhah, Neeh, Sahh}";
+        String expectedAvroh = "{Sahh, Neeh, Dhah, Neeh, Neeh, Dhah, Sahh, Neeh, Sahh, Dhah, Dhah, Neeh, Rehh, Rehh, Sahh, Neeh, Neeh, Dhah, Pah, Dhah, Dhah, Pah, Neeh, Dhah, Neeh, Pah, Pah, Dhah, Sahh, Sahh, Neeh, Dhah, Dhah, Pah, Mah, Pah, Pah, Mah, Dhah, Pah, Dhah, Mah, Mah, Pah, Neeh, Neeh, Dhah, Pah, Pah, Mah, Gah, Mah, Mah, Gah, Pah, Mah, Pah, Gah, Gah, Mah, Dhah, Dhah, Pah, Mah, Mah, Gah, Reh, Gah, Gah, Reh, Mah, Gah, Mah, Reh, Reh, Gah, Pah, Pah, Mah, Gah, Gah, Reh, Saa, Reh, Reh, Saa, Gah, Reh, Gah, Saa, Saa, Reh, Mah, Mah, Gah, Reh, Reh, Saa, Nee, Saa, Saa, Nee, Reh, Saa, Reh, Nee, Nee, Saa, Gah, Gah, Reh, Saa, Saa, Nee, Dha, Nee, Nee, Dha, Saa, Nee, Saa, Dha, Dha, Nee, Reh, Reh, Saa, Nee, Nee, Dha, Pa, Dha, Dha, Pa, Nee, Dha, Nee, Pa, Pa, Dha, Saa, Saa, Nee, Dha, Dha, Pa, Ma, Pa, Pa, Ma, Dha, Pa, Dha, Ma, Ma, Pa, Nee, Nee, Dha, Pa, Pa, Ma, Ga, Ma, Ma, Ga, Pa, Ma, Pa, Ga, Ga, Ma, Dha, Dha, Pa, Ma, Ma, Ga, Re, Ga, Ga, Re, Ma, Ga, Ma, Re, Re, Ga, Pa, Pa, Ma, Ga, Ga, Re, Sa, Re, Re, Sa, Ga, Re, Ga, Sa, Sa, Re, Ma, Ma, Ga, Re, Re, Sa, Neel, Sa, Sa, Neel, Re, Sa, Re, Neel, Neel, Sa, Ga, Ga, Re, Sa}";
+
+
+        ResponseEntity<List<List<Integer>>> listResponseEntity =
+                swaranjaliController.playAlankar("C", "MAJOR_SCALE", 2, 3, List.of("ALK_15"),
+                        120, "AC_GUITAR", false);
+        List<List<Integer>> aarovAndAvrov = listResponseEntity.getBody();
+        String actualAarov = Utils.printNotes(aarovAndAvrov.get(0), 48);
+        String actualAvrov = Utils.printNotes(aarovAndAvrov.get(1), 48);
+        assertThat(actualAarov).isEqualTo(expectedArroh);
+        assertThat(actualAvrov).isEqualTo(expectedAvroh);
+    }
+
+
     @Test
     public void test123() {
 
